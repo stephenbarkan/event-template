@@ -46,7 +46,7 @@
         <script defer src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
 
     </head>
-    <body class="font-body text-base text-white antialiased flex flex-col min-h-dvh items-center bg-paper pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]">
+    <body class="font-body text-base text-neutral antialiased flex flex-col min-h-dvh items-center bg-surface pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]">
         {% if global.announcementBannerContent %}
             {{ announcementBanner({content: global.announcementBannerContent }) }}
         {% endif %}

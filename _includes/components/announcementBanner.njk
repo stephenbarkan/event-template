@@ -27,7 +27,7 @@ description: "
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set styleClasses = "bg-ink py-1 text-paper border-y-2 border-paper" %}
+{% set styleClasses = "bg-hue py-1 text-surface border-y-2 border-surface" %}
 
 {% set position %}
     {% if props.position === "bottom" %}
@@ -61,7 +61,7 @@ description: "
                 {% if caller %}
                     {{ caller() | safe }}
                 {% else %}
-                    {{ markdown({content: props.content, transform: true, primaryColor:"text-paper", fontSize:"text-sm"},{class:"grow text-center line-clamp-1"}) }}
+                    {{ markdown({content: props.content, transform: true, primaryColor:"text-surface", fontSize:"text-sm"},{class:"grow text-center line-clamp-1"}) }}
                 {% endif %}
                 {{ button({icon:"×", type:"button", size:"sm", variant:"hue"},{@click:"showBanner = !showBanner", title:"Close announcement banner"}) }}
             </div>

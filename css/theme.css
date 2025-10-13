@@ -38,9 +38,9 @@
 
   --color-*: initial;
   --color-transparent: transparent;
-  --color-ink: color(display-p3 0.670588 0.356863 0.784314 / 1);
-  --color-paper: #211a15;
-  --color-white: #ecd1f6;
+  --color-hue: color(display-p3 0.670588 0.356863 0.784314 / 1);
+  --color-surface: #211a15;
+  --color-neutral: #ecd1f6;
 
   --spacing-site-inline: var(--space-site-inline);
   --spacing-section: var(--space-section);
@@ -87,50 +87,18 @@
 @utility text-2xl {
   font-family: var(--font-display);
   font-weight: 700;
-  color: vaR(--color-ink);
+  color: vaR(--color-hue);
 }
 @utility text-xl {
   font-family: var(--font-display);
   font-weight: 700;
-  color: var(--color-ink);
+  color: var(--color-hue);
 }
 
 @utility text-lg {
-  color: var(--color-ink);
+  color: var(--color-hue);
 }
 
 @utility text-icon {
   font-family: var(--font-body);
-}
-
-@font-face {
-  font-family: Gooper;
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/assets/Gooper-Regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: Gooper;
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/assets/Gooper-RegularItalic.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: GooperSemiCondensed;
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/assets/GooperSemiCondensed-Medium.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: GooperSemiCondensed;
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("/assets/GooperSemiCondensed-SemiBold.woff2") format("woff2");
 }

@@ -1,14 +1,14 @@
 {% from "components/markdown.njk" import markdown %}
 
 {% macro metadata(props={}) %}
-    <dl class="flex flex-col gap-4 not-last:border-b border-b-ink not-last:pb-12">
+    <dl class="flex flex-col gap-4 not-last:border-b border-b-hue not-last:pb-12">
         <dt class="text-lg">{{ props.term }}</dt>
         <dd>
             {{ markdown(
                 props={
                     content: props.details,
                     transform: true,
-                    overrides: {textColor: "color-white"}
+                    overrides: {textColor: "color-neutral"}
                 },
                 attrs={}
             ) }}
@@ -20,7 +20,10 @@
 
     <div class="flex flex-col gap-half-section">
         <div class="flex flex-col gap-8">
-            <h1 class="text-pretty text-2xl">{{ eventDetails.title }}</h1>
+            <div class="flex flex-col gap-6">
+                <p class="text-pretty text-lg">You're invited to</p>
+                <h1 class="text-pretty text-2xl">{{ eventDetails.title }}</h1>
+            </div>
             <p class="text-pretty">{{ eventDetails.subtitle }}</p>
             {{ button(
                 props={
@@ -40,16 +43,16 @@
                 details: eventDetails.date
             })}}
             {{ metadata({
+                term: "About the event",
+                details: eventDetails.description
+            })}}
+            {{ metadata({
                 term: "Location",
                 details: eventDetails.location
             })}}
             {{ metadata({
                 term: "Tickets",
                 details: eventDetails.ticketInfo
-            })}}
-            {{ metadata({
-                term: "About the event",
-                details: eventDetails.description
             })}}
         </div>
 

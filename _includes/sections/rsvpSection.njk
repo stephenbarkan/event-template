@@ -31,7 +31,7 @@
                 'I’ll pay at the door': 'We’ll accept cash or Venmo at the door!'
             },
             updateTotal() {
-                return '$' + this.attendees * this.ticketTiers[this.ticketTier][0] + '-' + this.attendees * this.ticketTiers[this.ticketTier][1]
+                return this.ticketTier ? '$' + this.attendees * this.ticketTiers[this.ticketTier][0] + '-' + this.attendees * this.ticketTiers[this.ticketTier][1] : '$0'
             }
         }"
         @input-attendees.window="attendees = $event.detail"
@@ -43,9 +43,9 @@
         action="/success"
         netlify
         tabindex="0"
-        class="w-full gap-half-section grid border border-ink pt-half-section">
-        <h2 class="text-xl text-center text-ink text-balance px-fluid-inline">RSVP</h2>
-        <div class="flex flex-col items-center gap-half-section text-ink px-fluid-inline">
+        class="w-full gap-half-section grid border border-hue pt-half-section">
+        <h2 class="text-xl text-center text-hue text-balance px-fluid-inline">RSVP</h2>
+        <div class="flex flex-col items-center gap-half-section text-hue px-fluid-inline">
             {{ input(
                 props={
                     name: "name",
@@ -69,8 +69,7 @@
                     type: "number",
                     required: true,
                     value: 1,
-                    min: 1,
-                    max: 6
+                    min: 1
                 }
             ) }}
             {{ input(
@@ -118,10 +117,10 @@
                 }
             ) }}
         </div>
-        <div class="grid md:grid-cols-2 border-t w-full items-stretch border-ink">
-            <div class="text-lg max-md:border-b md:border-r px-fluid-inline md:justify-center md:px-8 border-ink py-6 flex flex-col gap-2">
-                <span class="text-lg flex gap-4 items-center">Total: <span class="ml-auto text-white" x-text="updateTotal()"></span></span>
-                <small x-show="payment" class="text-sm opacity-70 text-white text-pretty" x-text="paymentMessages[payment]"></small>
+        <div class="grid md:grid-cols-2 border-t w-full items-stretch border-hue">
+            <div class="text-lg max-md:border-b md:border-r px-fluid-inline md:justify-center md:px-8 border-hue py-6 flex flex-col gap-2">
+                <span class="text-lg flex gap-4 items-center">Total: <span class="ml-auto text-neutral" x-text="updateTotal()"></span></span>
+                <small x-show="payment" class="text-sm opacity-70 text-neutral text-pretty" x-text="paymentMessages[payment]"></small>
             </div>
             <div class="py-8 px-fluid-inline md:px-8 flex items-center">{{ button({label: "Submit RSVP", type:"button", size:"base", variant: "ink"}, {type:"submit", class:"w-full"}) }}</div>
         </div>

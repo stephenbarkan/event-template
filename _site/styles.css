@@ -25,8 +25,8 @@
     --text-button: var(--text-button);
     --container-wide: 80rem;
     --container-narrow: 50rem;
-    --color-ink: color(display-p3 0.670588 0.356863 0.784314 / 1);
-    --color-white: #ecd1f6;
+    --color-hue: color(display-p3 0.670588 0.356863 0.784314 / 1);
+    --color-neutral: #ecd1f6;
     --spacing-site-inline: var(--space-site-inline);
     --spacing-tube: var(--space-tube);
     --spacing-indent: 1.5ch;
@@ -364,9 +364,6 @@
   .w-full {
     width: 100%;
   }
-  .max-w-88 {
-    max-width: calc(var(--spacing) * 88);
-  }
   .max-w-120 {
     max-width: calc(var(--spacing) * 120);
   }
@@ -483,6 +480,9 @@
   .gap-4 {
     gap: calc(var(--spacing) * 4);
   }
+  .gap-6 {
+    gap: calc(var(--spacing) * 6);
+  }
   .gap-8 {
     gap: calc(var(--spacing) * 8);
   }
@@ -491,9 +491,6 @@
   }
   .gap-16 {
     gap: calc(var(--spacing) * 16);
-  }
-  .gap-44 {
-    gap: calc(var(--spacing) * 44);
   }
   .gap-half-section {
     gap: var(--space-half-section);
@@ -569,29 +566,29 @@
     --tw-border-style: dotted;
     border-style: dotted;
   }
-  .border-ink {
+  .border-hue {
     border-color: color(display-p3 0.670588 0.356863 0.784314 / 1);
   }
-  .border-paper {
-    border-color: #211a15;
-  }
-  .border-white {
+  .border-neutral {
     border-color: #ecd1f6;
   }
-  .border-b-ink {
+  .border-surface {
+    border-color: #211a15;
+  }
+  .border-b-hue {
     border-bottom-color: color(display-p3 0.670588 0.356863 0.784314 / 1);
   }
-  .bg-ink {
+  .bg-hue {
     background-color: color(display-p3 0.670588 0.356863 0.784314 / 1);
   }
-  .bg-paper {
+  .bg-neutral {
+    background-color: #ecd1f6;
+  }
+  .bg-surface {
     background-color: #211a15;
   }
-  .bg-paper\/75 {
+  .bg-surface\/75 {
     background-color: color-mix(in oklab, #211a15 75%, transparent);
-  }
-  .bg-white {
-    background-color: #ecd1f6;
   }
   .bg-linear-to-l {
     --tw-gradient-position: to left;
@@ -686,12 +683,12 @@
   .text-2xl {
     font-family: var(--font-display);
     font-weight: 700;
-    color: vaR(--color-ink);
+    color: vaR(--color-hue);
   }
   .text-xl {
     font-family: var(--font-display);
     font-weight: 700;
-    color: var(--color-ink);
+    color: var(--color-hue);
   }
   .font-body {
     font-family: monospace;
@@ -748,17 +745,17 @@
   .text-\[firebrick\] {
     color: firebrick;
   }
-  .text-ink {
+  .text-hue {
     color: color(display-p3 0.670588 0.356863 0.784314 / 1);
   }
   .text-lg {
-    color: var(--color-ink);
+    color: var(--color-hue);
   }
-  .text-paper {
-    color: #211a15;
-  }
-  .text-white {
+  .text-neutral {
     color: #ecd1f6;
+  }
+  .text-surface {
+    color: #211a15;
   }
   .italic {
     font-style: italic;
@@ -865,7 +862,7 @@
       display: none;
     }
   }
-  .backdrop\:bg-ink\/35 {
+  .backdrop\:bg-hue\/35 {
     &::backdrop {
       background-color: color-mix(in oklab, color(display-p3 0.670588 0.356863 0.784314 / 1) 35%, transparent);
     }
@@ -1000,6 +997,12 @@
       border-right-width: 1px;
     }
   }
+  .md\:border-l {
+    @media (width >= 48rem) {
+      border-left-style: var(--tw-border-style);
+      border-left-width: 1px;
+    }
+  }
   .md\:px-8 {
     @media (width >= 48rem) {
       padding-inline: calc(var(--spacing) * 8);
@@ -1054,34 +1057,6 @@
       align-items: center;
     }
   }
-}
-@font-face {
-  font-family: Gooper;
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/assets/Gooper-Regular.woff2") format("woff2");
-}
-@font-face {
-  font-family: Gooper;
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/assets/Gooper-RegularItalic.woff2") format("woff2");
-}
-@font-face {
-  font-family: GooperSemiCondensed;
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/assets/GooperSemiCondensed-Medium.woff2") format("woff2");
-}
-@font-face {
-  font-family: GooperSemiCondensed;
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("/assets/GooperSemiCondensed-SemiBold.woff2") format("woff2");
 }
 .markdown {
   --md-border-color: var(--md-text-color);
