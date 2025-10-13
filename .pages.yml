@@ -32,6 +32,9 @@ content:
     type: file
     path: _data/eventDetails.json
     fields:
+      - name: graphic
+        label: Event graphic
+        type: image
       - name: title
         label: Event title
         type: string
@@ -50,9 +53,7 @@ content:
       - name: description
         label: Event description
         type: rich-text
-      - name: graphic
-        label: Event graphic
-        type: image
+
 components:
   input:
     label: textField
