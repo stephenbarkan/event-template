@@ -27,16 +27,46 @@ content:
         label: Announcement banner content
         type: rich-text
         description: Content to be displayed in a banner on top of webpages. Leave blank to hide the banner.
-  - name: faqs
-    label: FAQs
+  - name: event
+    label: Event details
     type: file
-    path: _data/frequentlyAskedQuestions.json
+    path: _data/eventDetails.json
     fields:
-      - name: faq
-        label: FAQ
-        component: accordion
-
+      - name: eventTitle
+        label: Event title
+        type: string
+      - name: eventSubtitle
+        label: Event subtitle
+        type: string
+      - name: eventDate
+        label: Event date
+        type: rich-text
+      - name: eventLocation
+        label: Event location
+        type: rich-text
+      - name: ticketInfo
+        label: Ticket info
+        type: rich-text
+      - name: eventDescription
+        label: Event description
+        type: rich-text
 components:
+  input:
+    label: textField
+    type: object
+    fields:
+      - name: name
+        label: Name
+        type: string
+      - name: label
+        label: Label
+        type: string
+      - name: description
+        label: Description
+        type: string
+      - name: required
+        label: Required?
+        type: boolean
   accordion:
     label: Accordion
     type: object
