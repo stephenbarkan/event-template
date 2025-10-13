@@ -9,7 +9,7 @@
 
 {% set nameLabel = "RSVPing as..." %}
 {% set attendeesLabel = "Number of attendees" %}
-{% set contactMethodLabel = "Phone number or Signal username" %}
+{% set contactMethodLabel = "E-mail address" %}
 {% set ticketTierLabel = "Choose a ticket tier" %}
 {% set paymentLabel = "Pay for your tickets now or at the door?" %}
 
@@ -21,14 +21,14 @@
             ticketTier: null,
             attendees: 1,
             ticketTiers: {
-                '$10-15: If things are tight right now': [10, 15],
-                '$15-25: If you’re managing': [15, 25],
-                '$25-50: If you’re financially comfortable': [25, 50]
+                '$10-15 if things are tight right now': [10, 15],
+                '$15-25 if you’re managing': [15, 25],
+                '$25-50 if you’re financially comfortable': [25, 50]
             },
             payment: '',
             paymentMessages: {
-                'I’ll pay now (Thank you!)': 'Send to @cchrp via Venmo',
-                'I’ll pay at the door': 'Pay in cash or Venmo @cchrp at the door'
+                'I’ll pay now (Thank you!)': `Venmo @CCHRP with your name and 'party' in the description.`,
+                'I’ll pay at the door': 'We’ll accept cash or Venmo at the door!'
             },
             updateTotal() {
                 return '$' + this.attendees * this.ticketTiers[this.ticketTier][0] + '-' + this.attendees * this.ticketTiers[this.ticketTier][1]
@@ -81,7 +81,7 @@
                 },
                 attrs={class:"w-full"},
                 fieldAttrs={
-                    type: "text",
+                    type: "email",
                     required: true
                 }
             ) }}
@@ -91,15 +91,15 @@
                     name: "ticket-tier",
                     label: ticketTierLabel,
                     options: [
-                        "$10-15: If things are tight right now",
-                        "$15-25: If you’re managing",
-                        "$25-50: If you’re financially comfortable"
+                        "$10-15 if things are tight right now",
+                        "$15-25 if you’re managing",
+                        "$25-50 if you’re financially comfortable"
                     ],
                     description: "Choose the tier that most closely fits your current financial situation."
                 },
                 attrs={class:"w-full"},
                 fieldAttrs={
-                    required: boolean
+                    required: true
                 }
             ) }}
             {{ fieldset(
@@ -114,14 +114,14 @@
                 },
                 attrs={class:"w-full"},
                 fieldAttrs={
-                    required: boolean
+                    required: true
                 }
             ) }}
         </div>
         <div class="grid md:grid-cols-2 border-t w-full items-stretch border-ink">
             <div class="text-lg max-md:border-b md:border-r px-fluid-inline md:justify-center md:px-8 border-ink py-6 flex flex-col gap-2">
-                <span class="text-lg flex gap-3 items-center">Total: <span class="text-white" x-text="updateTotal()"></span></span>
-                <small x-show="payment" class="text-sm opacity-70 text-white" x-text="paymentMessages[payment]"></small>
+                <span class="text-lg flex gap-4 items-center">Total: <span class="ml-auto text-white" x-text="updateTotal()"></span></span>
+                <small x-show="payment" class="text-sm opacity-70 text-white text-pretty" x-text="paymentMessages[payment]"></small>
             </div>
             <div class="py-8 px-fluid-inline md:px-8 flex items-center">{{ button({label: "Submit RSVP", type:"button", size:"base", variant: "ink"}, {type:"submit", class:"w-full"}) }}</div>
         </div>

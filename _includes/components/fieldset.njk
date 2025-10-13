@@ -46,8 +46,8 @@ description: "
         <div class="{{ directionClasses["column"] }}">
             {% set comma = joiner() %}
             <template x-for="option in [{% for option in props.options %}{{ comma() }} '{{ option }}'{% endfor%}]">
-                <div x-id="[option]" class="flex items-center gap-2">
-                    <input x-on:change="$dispatch('fieldset-{{ props.name }}', selected)" x-model="selected" class="accent-current w-[1.1em] h-[1.1em] scheme-dark shrink-0" type="{{ props.type }}" :id="$id(option)" name="{{ props.name }}" :value="option"/>
+                <div x-id="[option]" class="flex gap-2">
+                    <input x-on:change="$dispatch('fieldset-{{ props.name }}', selected)" x-model="selected" class="accent-current w-[1.1em] h-[1.5em] shrink-0" type="{{ props.type }}" :id="$id(option)" name="{{ props.name }}" :value="option"/>
                     <label class="{{ fieldsetOptionStyles }}" :for="$id(option)" x-text="option"></label>
                 </div>
             </template>

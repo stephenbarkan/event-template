@@ -54,10 +54,8 @@
 
   --radius-*: initial;
   --radius-inherit: inherit;
-  --radius-sm: 12px;
-  --radius-base: 16px;
-  --radius-lg: 20px;
-  --radius-xl: 24px;
+  --radius-base: 12px;
+  --radius-lg: 16px;
 
   --animate-marquee: marquee var(--animate-duration, 1s) infinite linear;
 
