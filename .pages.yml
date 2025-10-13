@@ -50,6 +50,9 @@ content:
       - name: description
         label: Event description
         type: rich-text
+      - name: graphic
+        label: Event graphic
+        type: image
 components:
   input:
     label: textField
