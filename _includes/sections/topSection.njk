@@ -1,7 +1,18 @@
+{% from "components/markdown.njk" import markdown %}
+
 {% macro metadata(props={}) %}
     <dl class="flex flex-col gap-2 not-last:border-b border-b-ink not-last:pb-12">
         <dt class="text-lg">{{ props.term }}</dt>
-        <dd>{{ props.details }}</dd>
+        <dd>
+            {{ markdown(
+                props={
+                    content: props.details,
+                    transform: true,
+                    overrides: {textColor: "color-white"}
+                },
+                attrs={}
+            ) }}
+        </dd>
     </dl>
 {% endmacro %}
 
@@ -9,8 +20,8 @@
 
     <div class="flex flex-col gap-half-section">
         <div class="flex flex-col gap-8">
-            <h1 class="text-pretty text-2xl">{{ global.siteTitle }}</h1>
-            <p>{{ global.siteDescription }}</p>
+            <h1 class="text-pretty text-2xl">{{ eventDetails.title }}</h1>
+            <p>{{ eventDetails.subtitle }}</p>
             {{ button(
                 props={
                     label: "RSVP now",
@@ -26,19 +37,19 @@
         <div class="flex flex-col gap-half-section">
             {{ metadata({
                 term: "Date",
-                details: "Saturday, November 1st 5pm - 9pm"
+                details: eventDetails.date
             })}}
             {{ metadata({
                 term: "Location",
-                details: "Shared upon registration."
+                details: eventDetails.location
             })}}
             {{ metadata({
                 term: "Tickets",
-                details: "Sliding scale, now or at the door. Venmo @cchrp."
+                details: eventDetails.ticketInfo
             })}}
             {{ metadata({
                 term: "About the event",
-                details: "A dance party in collaboration with local DJs and use ticket sales to generate funds. With sliding scale ticket options, we believe we can raise money without turning anyone away. Additionally, we have the idea to host a raffle at the event to entice party-goers to purchase raffle tickets for fun prizes. One idea is to partner with local businesses to donate prizes and some of us have offered to create some of our own for unique additions."
+                details: eventDetails.description
             })}}
         </div>
 
