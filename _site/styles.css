@@ -667,6 +667,9 @@
   .pt-16 {
     padding-top: calc(var(--spacing) * 16);
   }
+  .pt-half-section {
+    padding-top: var(--space-half-section);
+  }
   .pt-site-inline {
     padding-top: var(--space-site-inline);
   }
@@ -931,6 +934,11 @@
       grid-row: 1;
     }
   }
+  .max-md\:aspect-square {
+    @media (width < 48rem) {
+      aspect-ratio: 1 / 1;
+    }
+  }
   .max-md\:h-\[60vw\] {
     @media (width < 48rem) {
       height: 60vw;
@@ -999,6 +1007,11 @@
   .md\:gap-fluid-inline {
     @media (width >= 48rem) {
       gap: 5vw;
+    }
+  }
+  .md\:gap-section {
+    @media (width >= 48rem) {
+      gap: var(--space-section);
     }
   }
   .md\:border-r {

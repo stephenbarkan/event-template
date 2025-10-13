@@ -21,9 +21,9 @@
             ticketTier: null,
             attendees: 1,
             ticketTiers: {
-                '$10-15 if things are tight right now': [10, 15],
-                '$15-25 if you’re managing': [15, 25],
-                '$25-50 if you’re feeling comfortable': [25, 50]
+                '$10-15: If things are tight right now': [10, 15],
+                '$15-25: If you’re managing': [15, 25],
+                '$25-50: If you’re financially comfortable': [25, 50]
             },
             payment: '',
             paymentMessages: {
@@ -43,9 +43,9 @@
         action="/success"
         netlify
         tabindex="0"
-        class="w-full gap-16 md:gap-24 grid border border-ink pt-16">
+        class="w-full gap-half-section grid border border-ink pt-half-section">
         <h2 class="text-xl text-center text-ink text-balance px-fluid-inline">RSVP</h2>
-        <div class="flex flex-col items-center gap-16 text-ink px-fluid-inline">
+        <div class="flex flex-col items-center gap-half-section text-ink px-fluid-inline">
             {{ input(
                 props={
                     name: "name",
@@ -91,9 +91,9 @@
                     name: "ticket-tier",
                     label: ticketTierLabel,
                     options: [
-                        "$10-15 if things are tight right now",
-                        "$15-25 if you’re managing",
-                        "$25-50 if you’re feeling comfortable"
+                        "$10-15: If things are tight right now",
+                        "$15-25: If you’re managing",
+                        "$25-50: If you’re financially comfortable"
                     ],
                     description: "Choose the tier that most closely fits your current financial situation."
                 },

@@ -16,7 +16,7 @@
     </dl>
 {% endmacro %}
 
-{% call container({size: "wide", type:"cols-2"},{class:"gap-section md:gap-fluid-inline justify-items-center"}) %}
+{% call container({size: "wide", type:"cols-2"},{class:"gap-half-section md:gap-section md:gap-fluid-inline justify-items-center"}) %}
 
     <div class="flex flex-col gap-half-section">
         <div class="flex flex-col gap-8">
@@ -54,5 +54,5 @@
         </div>
 
     </div>
-    <div class="border max-md:row-1 md:sticky top-half-section h-fit max-md:h-[60vw] overflow-hidden"><img class="w-full object-cover object-top" src="{{ eventDetails.graphic }}" alt=""></div>
+    <div class="border max-md:row-1 md:sticky top-half-section h-fit max-md:aspect-square overflow-hidden"><img class="w-full object-cover object-top" src="{{ eventDetails.graphic }}" alt=""></div>
 {% endcall %}
