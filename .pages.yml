@@ -32,22 +32,22 @@ content:
     type: file
     path: _data/eventDetails.json
     fields:
-      - name: eventTitle
+      - name: title
         label: Event title
         type: string
-      - name: eventSubtitle
+      - name: subtitle
         label: Event subtitle
         type: string
-      - name: eventDate
+      - name: date
         label: Event date
         type: rich-text
-      - name: eventLocation
+      - name: location
         label: Event location
         type: rich-text
       - name: ticketInfo
         label: Ticket info
         type: rich-text
-      - name: eventDescription
+      - name: description
         label: Event description
         type: rich-text
 components:
