@@ -16,10 +16,8 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% call container({size: "narrow"},{class:"gap-8 justify-items-center"}) %}
-
-{{ testing }}
-    <form
-        x-data="{
+<div
+    x-data="{
             ticketTier: null,
             attendees: 1,
             ticketTiers: {
@@ -38,7 +36,8 @@
         }"
         @input-attendees.window="attendees = $event.detail"
         @fieldset-ticket-tier.window="ticketTier = $event.detail"
-        @fieldset-payment.window="payment = $event.detail"
+        @fieldset-payment.window="payment = $event.detail">
+    <form
         name="rsvp"
         method="POST"
         action="/success"
@@ -127,4 +126,5 @@
             <div class="py-8 px-fluid-inline md:px-8 flex items-center">{{ button({label: "Submit RSVP", type:"button", size:"base", variant: "ink"}, {type:"submit", class:"w-full"}) }}</div>
         </div>
     </form>
+</div>
 {% endcall %}
