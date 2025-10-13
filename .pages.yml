@@ -106,5 +106,6 @@ components:
         type: image
         description: The image that shows when you share the link. Ideally should be 1200 x 630 pixels.
 settings:
+  hide: true
   content:
     merge: true
