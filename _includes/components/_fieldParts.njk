@@ -10,9 +10,11 @@
 } %}
 
 {% set fieldLabelStyles = "text-ink text-lg text-pretty" %}
+{% set fieldLabelRequiredStyles = "text-[firebrick]" %}
 {% set fieldWrapperStyles = "grow flex border-white border rounded-base min-h-tube" %}
 {% set fieldStyles = "grow text-white disabled:opacity-60 rounded-inherit px-3 py-4 w-full" %}
 {% set fieldsetOptionStyles = "text-white" %}
+{% set fieldDescriptionStyles = "text-white text-sm opacity-70 text-pretty" %}
 
 {# Macros ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -22,13 +24,13 @@
         class="{{ fieldLabelStyles }} {{ attrs.class }}"
         {{ loopAttrs(attrs) }}
     >
-        {{ fieldProps.label }} {% if fieldAttrs.required %}<span class="">*</span>{% endif %}
+        {{ fieldProps.label }} {% if fieldAttrs.required %}<sup class="{{ fieldLabelRequiredStyles }}">*</sup>{% endif %}
     </{{ props.tag }}>
 {% endmacro %}
 
 {% macro fieldDescription(props={}, attrs={}) %}
     <small
         {{ loopAttrs(attrs) }}
-        class="text-white text-sm opacity-70 {{ attrs.class }}">{{ props.description }}
+        class="{{ fieldDescriptionStyles }} {{ attrs.class }}">{{ props.description }}
     </small>
 {% endmacro %}

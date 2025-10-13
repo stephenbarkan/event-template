@@ -750,6 +750,9 @@
   .text-wrap {
     text-wrap: wrap;
   }
+  .text-\[firebrick\] {
+    color: firebrick;
+  }
   .text-ink {
     color: color(display-p3 0.670588 0.356863 0.784314 / 1);
   }
