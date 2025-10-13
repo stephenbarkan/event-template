@@ -3,21 +3,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://mashthefash.netlify.app/pages/markdown-test/</loc>
+    <loc>https://monstermashthefash.netlify.app//pages/markdown-test/</loc>
     <lastmod>2025-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://mashthefash.netlify.app/</loc>
+    <loc>https://monstermashthefash.netlify.app//</loc>
     <lastmod>2025-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://mashthefash.netlify.app/pages/testing/</loc>
+    <loc>https://monstermashthefash.netlify.app//pages/testing/</loc>
     <lastmod>2025-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

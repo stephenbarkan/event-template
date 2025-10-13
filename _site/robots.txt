@@ -2,6 +2,6 @@
 User-agent: *
 Allow: /
 
-Host: https://mashthefash.netlify.app
+Host: https://monstermashthefash.netlify.app/
 
-Sitemap: https://mashthefash.netlify.app/sitemap.xml
+Sitemap: https://monstermashthefash.netlify.app//sitemap.xml
