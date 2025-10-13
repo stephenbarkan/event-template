@@ -108,3 +108,4 @@ components:
 settings:
   content:
     merge: true
+    hide: true
