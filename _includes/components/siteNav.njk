@@ -1,0 +1,24 @@
+{% from "components/button.njk" import button %}
+{% from "components/dropdown.njk" import dropdown %}
+{% from "components/container.njk" import container %}
+
+
+{% macro siteNav(props={}, attrs={}) %}
+    <nav class="w-full border-dark-grey max-lg:border-b border-dotted {{ attrs.class }}">
+        {% call container({size: "base", cols: ""}) %}
+            <div class="shrink-0 items-baseline justify-between py-nav flex">
+                <span class="flex items-center justify-self-start gap-16">
+                    {{ button({label:"Home", size:"lg", type:"link"},{href:"/"}) }}
+                    {% for item in props.links %}
+                        {{ item.macro(item.props, item.attrs) }}
+                    {% endfor %}
+                </span>
+                <span class="flex items-center justify-self-end gap-3">
+                    {% if caller %}
+                        {{ caller() | safe }}
+                    {% endif %}
+                </span>
+            </div>
+        {% endcall %}
+    </nav>
+{% endmacro %}

@@ -1,0 +1,49 @@
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/dropdown.njk" import dropdown %}
+{% from "components/button.njk" import button %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set developmentLinks = [
+    { macro: button, props:{label:"Home", type:"link", size:"sm"}, attrs:{href:"/"} },
+    { macro: button, props:{label:"Markdown", type:"link", size:"sm"}, attrs:{href:"/pages/markdown-test"} }
+] %}
+
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+<div x-data="{
+        show: true,
+        windowWidth: window.innerWidth,
+        getWidth() {
+            window.addEventListener('resize', () => {
+                this.windowWidth = window.innerWidth
+            })
+        }
+    }"
+    x-init="getWidth"
+    x-show="show"
+    x-transition:leave-end= "-translate-x-full"
+    class="fixed left-0 z-50 flex items-center gap-1 py-1 pl-2 pr-1 text-sm transition duration-500 border-2 border-l-0 rounded-r-lg bottom-1 bg-paper/75 backdrop-blur-sm">
+    <span class="flex w-full mr-1">
+        <span class="xs:hidden">XS-</span>
+        <span class="hidden xs:max-sm:block">XS-SM</span>
+        <span class="hidden sm:max-md:block">SM-MD</span>
+        <span class="hidden md:max-lg:block">MD-LG</span>
+        <span class="hidden lg:max-xl:block">LG-XL</span>
+        <span class="hidden xl:block">XL+</span>
+        <span>&nbsp;•&nbsp;</span>
+        <span x-text="windowWidth"></span>
+        <span>px</span>
+    </span>
+    {% if developmentLinks.length > 0 %}
+    {{ dropdown(
+        props={
+            position:["top", "left"],
+            dropdownItems: developmentLinks
+        },
+        triggerProps={label: "Dev", type: "button", size:"sm", variant:"hue"}
+    )}}
+    {% endif %}
+    {{ button({icon:"×", type:"button", size:"sm", variant:"hue"}, {@click:"show = false", title:"Close visualizer"}) }}
+</div>

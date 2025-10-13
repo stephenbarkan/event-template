@@ -1,0 +1,18 @@
+---
+layout: base
+---
+
+{% from "components/markdown.njk" import markdown %}
+{% from "components/container.njk" import container %}
+
+{% call container({size:"base"},{class:"py-section"}) %}
+    {{ markdown({
+        content: content,
+        fontSize: "text-base",
+        headingFont: "font-display",
+        primaryColor: "color-ink",
+        linkColor: "color-ink",
+        radius: "radius-sm",
+        scale: "2"
+    }) }}
+{% endcall %}

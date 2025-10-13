@@ -1,0 +1,50 @@
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set copyToClipboardMeta = {
+    args: '{% call copyToClipboard(
+    props={
+        input: "",
+        copyRef: "",
+        toastMessage: "",
+        toasterId: ""
+    },
+    attrs={}
+) %}
+{% endcall %}',
+description: "
+- Use `input` or `copyRef`, not both. `copyRef` is the `x-ref` value of an element inside the caller() that you want to copy the `innerText` value of.
+- Give an element inside the caller() the attribute `@click: 'copy'` to trigger the copy event.
+- Must have the `toaster` component somewhere on the page for this component to work.
+"
+} %}
+
+{# Nested components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro copyToClipboard(props={}, attrs={}) %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+<script defer src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script>
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+<span
+    x-data="{
+        input: {% if props.input %}'{{ props.input }}'{% else %}$refs.{{ props.copyRef }}.innerText{% endif %},
+        copy () {
+            $clipboard(this.input)
+            $dispatch('notify', { content:'{{props.toastMessage}}', toasterId:'{% if props.toasterId %}{{ props.toasterId }}{% else %}toaster{% endif %}' })
+        }
+    }"
+    {{ loopAttrs(attrs) }}
+    class="inline-block {{ attrs.class }}">
+    {{ caller() | safe }}
+</span>
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% endmacro %}

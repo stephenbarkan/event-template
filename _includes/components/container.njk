@@ -1,0 +1,41 @@
+{# Nested components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% set sizeClasses =
+    {
+        "narrow": "var(--container-narrow)",
+        "wide": "var(--container-wide)",
+        "full": "100vw"
+    }
+ %}
+
+{% set typeClasses =
+    {
+        "cols-1": "",
+        "cols-2": "md:grid-cols-2",
+        "sidebar": "lg:grid-cols-[300px_1fr]"
+    }
+ %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{# {% macro section(props={}, attrs={})%}
+    <{% if props.tag %}{{ props.tag }}{% else %}section{% endif %}
+        {{ loopAttrs(attrs) }}
+        class="w-full {{ attrs.class }}">
+        {{ caller() | safe }}
+    </{% if props.tag %}{{ props.tag }}{% else %}section{% endif %}>
+{% endmacro %} #}
+
+ {# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro container(props={}, attrs={})%}
+    <div
+        {{ loopAttrs(attrs) }}
+        class="container mx-auto grid max-w-[{% if props.size %}{{sizeClasses[props.size]}}{% else %}{{ sizeClasses.base }}{% endif %}] {% if props.type %}{{ typeClasses[props.type] }}{% endif %} {{ attrs.class }} {% if props.size != "full" %}w-[calc(100%-2*var(--spacing-site-inline))]{% endif %}">
+        {{ caller() | safe }}
+    </div>
+{% endmacro %}

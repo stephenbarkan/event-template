@@ -1,0 +1,34 @@
+{# Nested components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set directionClasses = {
+    row: "flex flex-col @min-[400px]:flex-row gap-2 @min-[400px]:items-center",
+    column: "flex flex-col gap-4"
+} %}
+
+{% set fieldLabelStyles = "text-ink text-lg text-pretty" %}
+{% set fieldWrapperStyles = "grow flex border-white border rounded-base min-h-tube" %}
+{% set fieldStyles = "grow text-white disabled:opacity-60 rounded-inherit px-3 py-4 w-full" %}
+{% set fieldsetOptionStyles = "text-white" %}
+
+{# Macros ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% macro fieldLabel(props={}, attrs={}, fieldProps={}, fieldAttrs={}) %}
+    <{{ props.tag }}
+        {% if props.tag === "label" %}for="{{ fieldProps.name }}"{% endif %}
+        class="{{ fieldLabelStyles }} {{ attrs.class }}"
+        {{ loopAttrs(attrs) }}
+    >
+        {{ fieldProps.label }} {% if fieldAttrs.required %}<span class="">*</span>{% endif %}
+    </{{ props.tag }}>
+{% endmacro %}
+
+{% macro fieldDescription(props={}, attrs={}) %}
+    <small
+        {{ loopAttrs(attrs) }}
+        class="text-white text-sm opacity-70 {{ attrs.class }}">{{ props.description }}
+    </small>
+{% endmacro %}

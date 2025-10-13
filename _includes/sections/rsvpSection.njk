@@ -1,0 +1,129 @@
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/input.njk" import input %}
+{% from "components/fieldset.njk" import fieldset %}
+{% from "components/button.njk" import button %}
+{% from "components/incrementer.njk" import incrementer %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set nameLabel = "RSVPing as..." %}
+{% set attendeesLabel = "Number of attendees" %}
+{% set contactMethodLabel = "Phone number or Signal username" %}
+{% set ticketTierLabel = "Choose a ticket tier" %}
+{% set paymentLabel = "Pay for your tickets now or at the door?" %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% call container({size: "narrow"},{class:"gap-8 justify-items-center"}) %}
+
+
+    <form
+        x-data="{
+            ticketTier: null,
+            attendees: 1,
+            ticketTiers: {
+                '$10-15 if things are tight right now': [10, 15],
+                '$15-25 if you’re managing': [15, 25],
+                '$25-50 if you’re feeling comfortable': [25, 50]
+            },
+            payment: '',
+            paymentMessages: {
+                'I’ll pay now (Thank you!)': 'Send to @cchrp via Venmo',
+                'I’ll pay at the door': 'Pay in cash or Venmo @cchrp at the door'
+            },
+            updateTotal() {
+                return '$' + this.attendees * this.ticketTiers[this.ticketTier][0] + '-' + this.attendees * this.ticketTiers[this.ticketTier][1]
+            }
+        }"
+        @input-attendees.window="attendees = $event.detail"
+        @fieldset-ticket-tier.window="ticketTier = $event.detail"
+        @fieldset-payment.window="payment = $event.detail"
+        name="rsvp"
+        method="POST"
+        action="/success"
+        netlify
+        tabindex="0"
+        class="w-full gap-16 md:gap-24 grid border border-ink pt-16">
+        <h2 class="text-xl text-center text-ink text-balance px-fluid-inline">RSVP</h2>
+        <div class="flex flex-col items-center gap-16 text-ink px-fluid-inline">
+            {{ input(
+                props={
+                    name: "name",
+                    label: nameLabel
+                },
+                attrs={class:"w-full"},
+                fieldAttrs={
+                    type: "text",
+                    required: true,
+                    autocomplete: true
+                }
+            ) }}
+            {{ input(
+                props={
+                    name: "attendees",
+                    label: attendeesLabel
+                },
+                attrs={class:"w-full"},
+                fieldAttrs={
+                    type: "number",
+                    required: true,
+                    value: 1,
+                    min: 1,
+                    max: 6
+                }
+            ) }}
+            {{ input(
+                props={
+                    name: "contact-method",
+                    label: contactMethodLabel,
+                    description: "So we can send you the location!"
+                },
+                attrs={class:"w-full"},
+                fieldAttrs={
+                    type: "text",
+                    required: true
+                }
+            ) }}
+            {{ fieldset(
+                props={
+                    type: "radio",
+                    name: "ticket-tier",
+                    label: ticketTierLabel,
+                    options: [
+                        "$10-15 if things are tight right now",
+                        "$15-25 if you’re managing",
+                        "$25-50 if you’re feeling comfortable"
+                    ],
+                    description: "Choose the tier that most closely fits your current financial situation."
+                },
+                attrs={class:"w-full"},
+                fieldAttrs={
+                    required: boolean
+                }
+            ) }}
+            {{ fieldset(
+                props={
+                    type: "radio",
+                    name: "payment",
+                    label: paymentLabel,
+                    options: [
+                        "I’ll pay now (Thank you!)",
+                        "I’ll pay at the door"
+                    ]
+                },
+                attrs={class:"w-full"},
+                fieldAttrs={
+                    required: boolean
+                }
+            ) }}
+        </div>
+        <footer class="grid md:grid-cols-2 border-t w-full items-stretch border-ink">
+            <div class="text-lg max-md:border-b md:border-r px-fluid-inline md:justify-center md:px-8 border-ink py-6 flex flex-col gap-2">
+                <span class="text-lg flex gap-3 items-center">Total: <span class="text-white" x-text="updateTotal()"></span></span>
+                <small x-show="payment" class="text-sm opacity-70 text-white" x-text="paymentMessages[payment]"></small>
+            </div>
+            <div class="py-8 px-fluid-inline md:px-8 flex items-center">{{ button({label: "Submit RSVP", type:"button", size:"base", variant: "ink"}, {type:"submit", class:"w-full"}) }}</div>
+        </footer>
+    </form>
+{% endcall %}

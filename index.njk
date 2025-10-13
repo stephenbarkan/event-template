@@ -1,0 +1,35 @@
+---
+layout: base
+headline: talk
+---
+
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/button.njk" import button %}
+{% from "components/container.njk" import container %}
+{% from "components/accordion.njk" import accordion %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+<main
+    x-data="{
+        neighborhood: null,
+        params: new URLSearchParams(window.location.search),
+        setNeighborhood () {
+            const value = this.params.get('neighborhood')
+            this.neighborhood = value ? value : null
+        }
+    }"
+    x-init="setNeighborhood"
+    class="w-full grow flex flex-col gap-section md:pt-section pt-site-inline">
+    <section id="top-section">
+        {% include "sections/topSection.njk" %}
+    </section>
+    <section id="rsvp-section">
+        {% include "sections/rsvpSection.njk" %}
+    </section>
+</main>
+
+<footer class="w-full py-6 text-sm text-center opacity-70">
+    <p>Web design and development by {{ button({label:"Chicago Design Cooperative", type:"link", size:"inherit"},{href:"/", target:"_blank", class:"inline-block"}) }}</p>
+</footer>

@@ -1,0 +1,74 @@
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set announcementBannerMeta = {
+    args: '{{ announcementBanner(
+    props={
+        content: "",
+        position: "top | bottom"
+    },
+    attrs={}
+) }}',
+description: "
+- Default to using `content` prop for markdownified text, but you can use `{% call %}` to insert custom content.
+- The banner's dismissed state currently resets when a new tab is opened.
+"
+} %}
+
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/button.njk" import button %}
+{% from "components/container.njk" import container %}
+{% from "components/markdown.njk" import markdown %}
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+
+{# Component --------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro announcementBanner(props={}, attrs={}) %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set styleClasses = "bg-ink py-1 text-paper border-y-2 border-paper" %}
+
+{% set position %}
+    {% if props.position === "bottom" %}
+        fixed bottom-0
+    {% else %}
+        sticky top-0
+    {% endif %}
+{% endset %}
+
+{% if props.position === "bottom" %}
+    <style>
+        body:has([data-announcement-banner].bottom-0) {
+            --announcementBannerBlockSize: 4rem;
+        }
+    </style>
+{% endif %}
+
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+<template
+    x-data="{ showBanner: $persist(true).as('ab-{{ global.announcementBannerContent | slugify }}') }"
+    x-if="showBanner">
+    <div
+        data-announcement-banner
+        {{ loopAttrs(attrs) }}
+        class="w-full {{ position }} z-40 {{ styleClasses }} {{ attrs.class }}">
+        {% call container({size:"full"}) %}
+            <div class="flex items-center justify-between">
+                {% if caller %}
+                    {{ caller() | safe }}
+                {% else %}
+                    {{ markdown({content: props.content, transform: true, primaryColor:"text-paper", fontSize:"text-sm"},{class:"grow text-center line-clamp-1"}) }}
+                {% endif %}
+                {{ button({icon:"×", type:"button", size:"sm", variant:"hue"},{@click:"showBanner = !showBanner", title:"Close announcement banner"}) }}
+            </div>
+        {% endcall %}
+    </div>
+</template>
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% endmacro %}

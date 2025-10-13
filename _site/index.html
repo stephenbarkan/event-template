@@ -1,0 +1,76 @@
+<!doctype html><html lang="en" class="scroll-smooth scroll-p-12"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Monster Mash the Fash</title><meta property="og:title" content="Monster Mash the Fash"><meta name="description" content="
+     Dance party fundraiser for Defend Migrants Alliance"><meta property="og:description" content="
+     Dance party fundraiser for Defend Migrants Alliance"><meta property="og:url" content="https://mashthefash.netlify.app/"><meta property="og:image" content="https://mashthefash.netlify.app/assets/uploads/og-image.jpg
+"><meta property="og:type" content="website"><meta name="generator" content="Eleventy v3.1.2"><link rel="icon" type="image/x-icon" href="/assets/uploads/favicon.png"><link rel="stylesheet" href="/styles.css"><script defer="" src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script></head><body class="font-body text-base text-white antialiased flex flex-col min-h-dvh items-center bg-paper pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]"><div x-data="{
+        show: true,
+        windowWidth: window.innerWidth,
+        getWidth() {
+            window.addEventListener('resize', () => {
+                this.windowWidth = window.innerWidth
+            })
+        }
+    }" x-init="getWidth" x-show="show" x-transition:leave-end="-translate-x-full" class="fixed left-0 z-50 flex items-center gap-1 py-1 pl-2 pr-1 text-sm transition duration-500 border-2 border-l-0 rounded-r-lg bottom-1 bg-paper/75 backdrop-blur-sm"><span class="flex w-full mr-1"><span class="xs:hidden">XS-</span> <span class="hidden xs:max-sm:block">XS-SM</span> <span class="hidden sm:max-md:block">SM-MD</span> <span class="hidden md:max-lg:block">MD-LG</span> <span class="hidden lg:max-xl:block">LG-XL</span> <span class="hidden xl:block">XL+</span> <span>&nbsp;•&nbsp;</span> <span x-text="windowWidth"></span> <span>px</span></span><div x-data="{
+        open: false,
+        toggle() {
+            if (this.open) {
+                return this.close()
+            }
+            this.$refs.button.focus()
+            this.open = true
+        },
+        close(focusAfter) {
+            if (! this.open) return
+            this.open = false
+            focusAfter && focusAfter.focus()
+        },
+    }" x-id="['dropdown']" x-on:keydown.escape.prevent.stop="close($refs.button)" x-on:focusin.window="! $refs.panel.contains($event.target) && close()" class="relative max-w-fit"><button class="relative shrink-0 disabled:opacity-60 inline-grid cursor-pointer leading-none border hover:underline underline-offset-3 decoration-2 text-sm p-3 rounded-base text-white border-ink" x-ref="button" @click="toggle()" :aria-expanded="open" :aria-controls="$id(&#39;dropdown&#39;)"><span class="relative flex items-center justify-center gap-2"><span>Dev</span></span></button><div x-ref="panel" x-show="open" x-on:click.outside="close($refs.button)" x-cloak="" :id="$id('dropdown')" class="absolute min-w-max z-20 outline-none bg-paper border border-2 px-4 py-3 rounded-sm bottom-full mb-2 left-0"><ul class="flex flex-col items-start gap-3"><li class="*:inline-block"><a class="relative shrink-0 disabled:opacity-60 inline-grid cursor-pointer underline hover:no-underline underline-offset-3 decoration-from-font active:scale-[.98] text-sm" href="/"><span class="relative flex items-center justify-center gap-2"><span>Home</span></span></a></li><li class="*:inline-block"><a class="relative shrink-0 disabled:opacity-60 inline-grid cursor-pointer underline hover:no-underline underline-offset-3 decoration-from-font active:scale-[.98] text-sm" href="/pages/markdown-test"><span class="relative flex items-center justify-center gap-2"><span>Markdown</span></span></a></li></ul></div></div><button class="relative shrink-0 disabled:opacity-60 inline-grid cursor-pointer leading-none border hover:underline underline-offset-3 decoration-2 text-sm p-3 rounded-base text-white border-ink" @click="show = false" title="Close visualizer"><span class="relative flex items-center justify-center gap-2"><span class="text-icon">×</span></span></button></div><main x-data="{
+        neighborhood: null,
+        params: new URLSearchParams(window.location.search),
+        setNeighborhood () {
+            const value = this.params.get('neighborhood')
+            this.neighborhood = value ? value : null
+        }
+    }" x-init="setNeighborhood" class="w-full grow flex flex-col gap-section md:pt-section pt-site-inline"><section id="top-section"><div class="container mx-auto grid max-w-[var(--container-wide)] md:grid-cols-2 gap-section md:gap-fluid-inline justify-items-center w-[calc(100%-2*var(--spacing-site-inline))]"><div class="flex flex-col gap-half-section"><div class="flex flex-col gap-8"><h1 class="text-pretty text-2xl">Monster Mash the Fash</h1><p>Dance party fundraiser for Defend Migrants Alliance</p><a class="relative shrink-0 disabled:opacity-60 inline-grid cursor-pointer leading-none border hover:underline underline-offset-3 decoration-2 text-button min-w-15 min-h-tube py-5 px-6 rounded-lg text-paper bg-white border-white" href="#rsvp-section"><span class="relative flex items-center justify-center gap-2"><span>RSVP now</span></span></a></div><div class="flex flex-col gap-half-section"><dl class="flex flex-col gap-2 not-last:border-b border-b-ink not-last:pb-12"><dt class="text-lg">Date</dt><dd>Saturday, November 1st 5pm - 9pm</dd></dl><dl class="flex flex-col gap-2 not-last:border-b border-b-ink not-last:pb-12"><dt class="text-lg">Location</dt><dd>Shared upon registration.</dd></dl><dl class="flex flex-col gap-2 not-last:border-b border-b-ink not-last:pb-12"><dt class="text-lg">Tickets</dt><dd>Sliding scale, now or at the door. Venmo @cchrp.</dd></dl><dl class="flex flex-col gap-2 not-last:border-b border-b-ink not-last:pb-12"><dt class="text-lg">About the event</dt><dd>A dance party in collaboration with local DJs and use ticket sales to generate funds. With sliding scale ticket options, we believe we can raise money without turning anyone away. Additionally, we have the idea to host a raffle at the event to entice party-goers to purchase raffle tickets for fun prizes. One idea is to partner with local businesses to donate prizes and some of us have offered to create some of our own for unique additions.</dd></dl></div></div><div class="border max-md:row-1 md:sticky top-half-section h-fit max-md:h-[60vw] overflow-hidden"><picture><source type="image/webp" srcset="/.11ty/image/?src=assets%2Fuploads%2Fflyer.png&width=918&format=webp&via=transform 918w"><img class="w-full object-cover object-top" src="/.11ty/image/?src=assets%2Fuploads%2Fflyer.png&width=918&format=jpeg&via=transform" alt="" width="918" height="1148"></picture></div></div></section><section id="rsvp-section"><div class="container mx-auto grid max-w-[var(--container-narrow)] gap-8 justify-items-center w-[calc(100%-2*var(--spacing-site-inline))]"><form x-data="{
+            ticketTier: null,
+            attendees: 1,
+            ticketTiers: {
+                '$10-15 if things are tight right now': [10, 15],
+                '$15-25 if you’re managing': [15, 25],
+                '$25-50 if you’re feeling comfortable': [25, 50]
+            },
+            payment: '',
+            paymentMessages: {
+                'I’ll pay now (Thank you!)': 'Send to @cchrp via Venmo',
+                'I’ll pay at the door': 'Pay in cash or Venmo @cchrp at the door'
+            },
+            updateTotal() {
+                return '$' + this.attendees * this.ticketTiers[this.ticketTier][0] + '-' + this.attendees * this.ticketTiers[this.ticketTier][1]
+            }
+        }" @input-attendees.window="attendees = $event.detail" @fieldset-ticket-tier.window="ticketTier = $event.detail" @fieldset-payment.window="payment = $event.detail" name="rsvp" method="POST" action="/success" netlify="" tabindex="0" class="w-full gap-16 md:gap-24 grid border border-ink pt-16"><h2 class="text-xl text-center text-ink text-balance px-fluid-inline">RSVP</h2><div class="flex flex-col items-center gap-16 text-ink px-fluid-inline"><div x-data="{value:''}" class="flex flex-col gap-4 w-full"><label for="name" class="text-ink text-lg text-pretty">RSVPing as... <span class="">*</span></label> <span class="grow flex border-white border rounded-base min-h-tube"><input x-on:input="$dispatch('input-name', value)" x-model="value" name="name" id="name" type="text" required="true" autocomplete="true" class="grow text-white disabled:opacity-60 rounded-inherit px-3 py-4 w-full"></span></div><div x-data="{value:'1'}" class="flex flex-col gap-4 w-full"><label for="attendees" class="text-ink text-lg text-pretty">Number of attendees <span class="">*</span></label> <span class="grow flex border-white border rounded-base min-h-tube"><input x-init="$dispatch('input-attendees', '1')" x-on:input="$dispatch('input-attendees', value)" x-model="value" name="attendees" id="attendees" type="number" required="true" value="1" min="1" max="6" class="grow text-white disabled:opacity-60 rounded-inherit px-3 py-4 w-full"></span></div><div x-data="{value:''}" class="flex flex-col gap-4 w-full"><label for="contact-method" class="text-ink text-lg text-pretty">Phone number or Signal username <span class="">*</span></label> <span class="grow flex border-white border rounded-base min-h-tube"><input x-on:input="$dispatch('input-contact-method', value)" x-model="value" name="contact-method" id="contact-method" type="text" required="true" class="grow text-white disabled:opacity-60 rounded-inherit px-3 py-4 w-full"> </span><small class="text-white text-sm opacity-70">So we can send you the location!</small></div><fieldset x-data="{
+        selected: []
+    }" id="ticket-tier" name="ticket-tier" class="w-full"><div class="flex flex-col gap-4 @container"><legend class="text-ink text-lg text-pretty">Choose a ticket tier</legend><div class="flex flex-col gap-4"><template x-for="option in [ '$10-15 if things are tight right now', '$15-25 if you’re managing', '$25-50 if you’re feeling comfortable']"><div x-id="[option]" class="flex items-center gap-2"><input x-on:change="$dispatch('fieldset-ticket-tier', selected)" x-model="selected" class="accent-current w-[1.1em] h-[1.1em] scheme-dark shrink-0" type="radio" :id="$id(option)" name="ticket-tier" :value="option"> <label class="text-white" :for="$id(option)" x-text="option"></label></div></template></div><small class="text-white text-sm opacity-70">Choose the tier that most closely fits your current financial situation.</small></div></fieldset><fieldset x-data="{
+        selected: []
+    }" id="payment" name="payment" class="w-full"><div class="flex flex-col gap-4 @container"><legend class="text-ink text-lg text-pretty">Pay for your tickets now or at the door?</legend><div class="flex flex-col gap-4"><template x-for="option in [ 'I’ll pay now (Thank you!)', 'I’ll pay at the door']"><div x-id="[option]" class="flex items-center gap-2"><input x-on:change="$dispatch('fieldset-payment', selected)" x-model="selected" class="accent-current w-[1.1em] h-[1.1em] scheme-dark shrink-0" type="radio" :id="$id(option)" name="payment" :value="option"> <label class="text-white" :for="$id(option)" x-text="option"></label></div></template></div></div></fieldset></div><footer class="grid md:grid-cols-2 border-t w-full items-stretch border-ink"><div class="text-lg max-md:border-b md:border-r px-fluid-inline md:justify-center md:px-8 border-ink py-6 flex flex-col gap-2"><span class="text-lg flex gap-3 items-center">Total: <span class="text-white" x-text="updateTotal()"></span></span> <small x-show="payment" class="text-sm opacity-70 text-white" x-text="paymentMessages[payment]"></small></div><div class="py-8 px-fluid-inline md:px-8 flex items-center"><button class="relative shrink-0 disabled:opacity-60 inline-grid cursor-pointer w-full leading-none border hover:underline underline-offset-3 decoration-2 text-button min-w-15 min-h-tube py-5 px-6 rounded-lg text-paper bg-white border-white" type="submit"><span class="relative flex items-center justify-center gap-2"><span>Submit RSVP</span></span></button></div></footer></form></div></section></main><footer class="w-full py-6 text-sm text-center opacity-70"><p>Web design and development by <a class="relative shrink-0 disabled:opacity-60 inline-grid cursor-pointer inline-block underline hover:no-underline underline-offset-3 decoration-from-font active:scale-[.98]" href="/" target="_blank"><span class="relative flex items-center justify-center gap-2"><span>Chicago Design Cooperative</span></span></a></p></footer><div x-data="{
+        toasts: [],
+        add(e) {
+            if ( e.detail.toasterId === 'toaster') {
+                this.toasts.push({
+                    id: e.timeStamp,
+                    content: e.detail.content
+                })
+            }
+        },
+        remove(toast) {
+            this.toasts = this.toasts.filter(i => i.id !== toast.id)
+        }
+    }" @notify.window="add($event)" id="toaster" data-toaster="" role="status" aria-live="polite" class="fixed flex items-center flex-col-reverse justify-center z-50 pointer-events-none gap-2 top-nav right-site left-site"><template x-for="toast in toasts" :key="toast.id"><div x-data="{
+                show: false,
+                init() {
+                    this.$nextTick(() => this.show = true)
+                    setTimeout(() => this.transitionOut(), 2000)
+                },
+                transitionOut() {
+                    this.show = false
+                    setTimeout(() => this.remove(this.toast), 300)
+                }
+            }" x-show="show" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:leave-end="opacity-0 -translate-y-2" class="flex items-center pointer-events-auto text-center duration-200 delay-100 transition gap-item-gap bg-ink border-grey border shadow-zine rounded text-white-smoke px-5 py-3 text-base"><span x-text="toast.content"></span></div></template></div><script defer="" src="https://unpkg.com/alpinejs@3.14.9/dist/cdn.min.js"></script></body></html>

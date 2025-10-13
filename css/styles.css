@@ -1,0 +1,67 @@
+@import "tailwindcss";
+@import "./theme.css";
+@import "./markdown.css";
+
+[x-cloak] {
+  display: none !important;
+}
+
+@layer components {
+  :root {
+    --breakpoint-xs: 28rem; /* 448px */
+    --breakpoint-sm: 40rem; /* 640px */
+    --breakpoint-md: 48rem; /* 704px */
+    --breakpoint-lg: 60rem; /* 960px */
+    --breakpoint-xl: 75rem; /* 1200px */
+
+    --text-2xl: 46px;
+    --text-xl: 36px;
+    --text-lg: 22px;
+    --text-button: 24px;
+    --text-base: 18px;
+    --text-sm: 16px;
+    --text-icon: 1.3em;
+
+    --space-site-inline: 1rem;
+    --space-section: 6rem;
+    --space-half-section: 3rem;
+    --space-tube: 4.75rem;
+
+    /* > md */
+    @media screen and (min-width: 640px) {
+    }
+
+    /* > md */
+    @media screen and (min-width: 768px) {
+      --space-site-inline: 3rem;
+      --space-section: 8rem;
+      --space-half-section: 4rem;
+
+      --text-2xl: 72px;
+      --text-xl: 64px;
+      --text-lg: 28px;
+      --text-base: 21px;
+      --text-sm: 18px;
+      --text-button: 24px;
+    }
+
+    /* > lg */
+    @media screen and (min-width: 960px) {
+    }
+
+    /* > xl */
+    @media screen and (min-width: 1120px) {
+    }
+  }
+
+  .text-icon {
+    text-box-trim: trim-both;
+    text-box-edge: cap alphabetic;
+  }
+
+  [data-button-card]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+}

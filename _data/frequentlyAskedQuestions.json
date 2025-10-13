@@ -1,0 +1,37 @@
+{
+  "faq": [
+    {
+      "title": "What is this?",
+      "description": "_ENM Peer Support_ is a community service project providing support to our peers who are going through the experience of opening a relationship.\n\nWe host one-on-one/two conversations as spaces to ask questions, share experiences, and receive support. How our time together looks is up to you and us—we could go on a walk, meet at a coffee shop or virtually in a video call, or try some other format we haven't thought of yet!",
+      "isOpen": true
+    },
+    {
+      "title": "Why are you offering this?",
+      "description": "We started _ENM Peer Support_ because we know that transitioning a relationship from monogamy to non-monogamy can be very challenging, and wish we'd had a network of support when going through it ourselves.\n\nWe believe this project can be of help to our ENM peers by sharing stories from our journeys, things we tried and learned along the way, and resources that helped us. Everyone and every experience is different, but we can still learn a lot from each other.",
+      "isOpen": false
+    },
+    {
+      "title": "Does it cost money?",
+      "description": "No, _ENM Peer Support_ is a community service offered for free.\n\nHowever, we follow the mutual aid model of neighbors helping neighbors, so if you find our time together to be helpful and would like to help us in return, we do encourage monetary donations commensurate with your financial situation and how valuable you feel the service has been for you.",
+      "isOpen": false
+    },
+    {
+      "title": "How is this different from couple's therapy?",
+      "description": "Well, to start, we're not trained or licensed therapists, so you should not seek that kind of support from _ENM Peer Support_. If you can access couple's therapy, we highly encourage you to do that; professional mediation can be very helpful when challenges arise between partners.\n\n_ENM Peer Support_ is meant to be a more casual supplement for you to hear others' tales of relationship-opening and to learn from their experiences.",
+      "isOpen": false
+    },
+    {
+      "title": "Will you keep our secrets?",
+      "description": "Yes! Your personal information and the stories you share during our time together will stay between us.\n\nWe know sharing about relationship challenges and insecurities can be vulnerable and we want to honor that and foster trust and safety between parties. We ask that you act in-kind towards us!",
+      "isOpen": false
+    },
+    {
+      "title": "Do we have to be bisexual and live in Logan Square?",
+      "description": "No! We just thought it would make a silly and attention-grabbing poster design since Logan Square is often teased as being the center of Chicago's bisexual, non-monogamy culture.",
+      "isOpen": false,
+      "attrs": {
+        "x-show": "neighborhood === 'Logan Square'"
+      }
+    }
+  ]
+}

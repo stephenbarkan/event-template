@@ -1,0 +1,76 @@
+media: assets/uploads
+content:
+  - name: global
+    label: Site data
+    type: file
+    path: _data/global.json
+    fields:
+      - name: siteDomain
+        label: Site domain
+        type: string
+        description: Should be formatted like "https://domain.com". Be sure to leave off the trailing "/"
+      - name: siteTitle
+        label: Site title
+        type: string
+      - name: siteDescription
+        label: Site description
+        description: The fallback page description that shows when you share a link to a page without its own page description set.
+      - name: siteImage
+        label: Site share image
+        type: image
+        description: The fallback image that shows when you share a link to a page without its own share image set. Ideally should be 1200 x 630 pixels.
+      - name: favicon
+        label: Browser tab icon
+        type: image
+        description: The little icon that shows in browser tabs. 128x128px PNG works.
+      - name: announcementBannerContent
+        label: Announcement banner content
+        type: rich-text
+        description: Content to be displayed in a banner on top of webpages. Leave blank to hide the banner.
+  - name: faqs
+    label: FAQs
+    type: file
+    path: _data/frequentlyAskedQuestions.json
+    fields:
+      - name: faq
+        label: FAQ
+        component: accordion
+
+components:
+  accordion:
+    label: Accordion
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: "{index}: {fields.title}"
+    fields:
+      - name: title
+        label: Question
+        type: string
+      - name: description
+        label: Answer
+        type: rich-text
+      - name: isOpen
+        label: Expanded
+        type: boolean
+        default: false
+  metadata:
+    label: SEO metadata
+    type: object
+    fields:
+      - name: seoTitle
+        label: SEO page title
+        type: string
+        description: The title of the page that shows when you share the link
+      - name: seoDescription
+        label: SEO description
+        type: string
+        description: The description of the page used for SEO purposes
+      - name: seoImage
+        label: Share image
+        type: image
+        description: The image that shows when you share the link. Ideally should be 1200 x 630 pixels.
+settings:
+  content:
+    merge: true

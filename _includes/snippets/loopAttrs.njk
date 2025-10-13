@@ -1,0 +1,8 @@
+{% set attrs = {} %}
+{% macro loopAttrs(argument) %}
+
+    {% for key, value in argument %}
+        {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
+    {% endfor %}
+
+{% endmacro %}

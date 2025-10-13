@@ -1,0 +1,63 @@
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set inputMeta = {
+    args: '{{ input(
+    props={
+        name: "",
+        label: "",
+        description: "",
+        direction: "column | row"
+    },
+    attrs={},
+    fieldAttrs={
+        type: "",
+        placeholder: "",
+        required: boolean,
+        min: "",
+        max: ""
+        autocomplete: "on | off"
+    }
+) }}',
+description: "
+- `fieldAttrs.type` can be most of the types listed [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#input_types).
+- Dispatches event `input-{{ props.name }}` when the value is updated.
+- You can get this value with `@input-{{ props.name }}.window='{{ var }} = $event.detail'`
+"
+} %}
+
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionClasses, fieldStyles, fieldWrapperStyles %}
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro input(props={}, attrs={}, fieldAttrs={}) %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+<div
+    x-data="{value:'{% if fieldAttrs.value %}{{fieldAttrs.value}}{% endif %}'}"
+    {{ loopAttrs(attrs) }}
+    class="{% if props.direction %}{{ directionClasses[props.direction] }}{% else %}{{ directionClasses['column'] }}{% endif %} {{ attrs.class }}">
+
+    {% if props.label %}{{ fieldLabel(props={tag: "label"}, fieldProps=props, fieldAttrs=fieldAttrs) }}{% endif %}
+
+        <span class="{{ fieldWrapperStyles }}">
+            <input
+            {% if fieldAttrs.value %}x-init="$dispatch('input-{{ props.name }}', '{{ fieldAttrs.value }}')"{% endif %}
+            x-on:input="$dispatch('input-{{ props.name }}', value)"
+            x-model="value"
+            name="{{ props.name }}"
+            id="{{ props.name }}"
+            {{ loopAttrs(fieldAttrs) }}
+            class="{{ fieldStyles }} {{ fieldAttrs.class }}">
+        </span>
+
+    {% if props.description %}{{ fieldDescription(props) }}{% endif %}
+
+</div>
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% endmacro %}
