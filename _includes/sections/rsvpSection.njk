@@ -119,12 +119,12 @@
                 }
             ) }}
         </div>
-        <footer class="grid md:grid-cols-2 border-t w-full items-stretch border-ink">
+        <div class="grid md:grid-cols-2 border-t w-full items-stretch border-ink">
             <div class="text-lg max-md:border-b md:border-r px-fluid-inline md:justify-center md:px-8 border-ink py-6 flex flex-col gap-2">
                 <span class="text-lg flex gap-3 items-center">Total: <span class="text-white" x-text="updateTotal()"></span></span>
                 <small x-show="payment" class="text-sm opacity-70 text-white" x-text="paymentMessages[payment]"></small>
             </div>
             <div class="py-8 px-fluid-inline md:px-8 flex items-center">{{ button({label: "Submit RSVP", type:"button", size:"base", variant: "ink"}, {type:"submit", class:"w-full"}) }}</div>
-        </footer>
+        </div>
     </form>
 {% endcall %}
