@@ -2,14 +2,9 @@
 layout: base
 ---
 
-{% from "snippets/loopAttrs.njk" import loopAttrs %}
+{% from "components/input.njk" import input %}
 
-{% set indigo = {
-    foo: "bar",
-    red: "yellow",
-    class: "text-lg"
-} %}
+{% for item in fields.formFields %}
 
-<div
-    {{ loopAttrs(indigo) }}
->Testing</div>
+{% endfor %}
+{{ item._block(item.props, item.attrs, item.fieldAttrs) }}
