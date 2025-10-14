@@ -8,6 +8,7 @@ content:
       - name: formFields
         label: Fields
         type: block
+        blockKey: type
         list: true
         blocks:
         - name: input
