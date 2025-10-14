@@ -81,6 +81,7 @@ components:
           - name: name
             label: Name
             type: string
+            required: true
           - name: label
             label: Label
             type: string
@@ -93,6 +94,7 @@ components:
         fields:
           - name: type
             label: Input type
+            required: true
             type: string
           - name: placeholder
             label: Placeholder text
