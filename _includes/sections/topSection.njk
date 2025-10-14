@@ -1,7 +1,7 @@
 {% from "components/markdown.njk" import markdown %}
 
 {% macro metadata(props={}) %}
-    <dl class="flex flex-col gap-4 not-last:border-b border-b-hue not-last:pb-half-section">
+    <dl class="flex flex-col gap-4 not-last:border-b not-last:border-b-hue/75 not-last:pb-half-section">
         <dt class="text-lg">{{ props.term }}</dt>
         <dd>
             {{ markdown(

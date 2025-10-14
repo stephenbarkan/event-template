@@ -21,7 +21,7 @@ headline: talk
         }
     }"
     x-init="setNeighborhood"
-    class="w-full grow flex flex-col gap-section md:pt-section py-site-inline">
+    class="w-full grow flex flex-col gap-section md:pt-section pt-site-inline">
     <section id="top-section">
         {% include "sections/topSection.njk" %}
     </section>
@@ -30,6 +30,6 @@ headline: talk
     </section>
 </main>
 
-{# <footer class="w-full py-6 text-sm text-center opacity-70">
-    <p>Web design and development by {{ button({label:"Chicago Design Cooperative", type:"link", size:"inherit"},{href:"/", target:"_blank", class:"inline-block"}) }}</p>
-</footer> #}
+<footer class="w-full py-6 text-sm text-center opacity-70">
+    <p>Web design and development by the {{ button({label:"Chicago Design Cooperative", type:"link", size:"inherit"},{href:global.creditLink, target:"_blank", class:"inline-block"}) }}</p>
+</footer>

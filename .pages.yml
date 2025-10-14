@@ -59,18 +59,38 @@ components:
     label: textField
     type: object
     fields:
-      - name: name
-        label: Name
-        type: string
-      - name: label
-        label: Label
-        type: string
-      - name: description
-        label: Description
-        type: string
-      - name: required
-        label: Required?
-        type: boolean
+      - name: props
+        label: Component props
+        type: object
+        fields:
+          - name: name
+            label: Name
+            type: string
+          - name: label
+            label: Label
+            type: string
+          - name: description
+            label: Description
+            type: string
+      - name: fieldAttrs
+        label: Input HTML attributes
+        type: object
+        fields:
+          - name: type
+            label: Input type
+            type: string
+          - name: placeholder
+            label: Placeholder text
+            type: string
+          - name: required
+            label: Required?
+            type: boolean
+          - name: min
+            label: Minimum value
+            type: number
+          - name: max
+            label: Maximum value
+            type: number
   accordion:
     label: Accordion
     type: object

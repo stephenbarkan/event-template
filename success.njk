@@ -8,7 +8,7 @@ eleventyExcludeFromCollections: true
 {% from "components/container.njk" import container %}
 {% from "components/copyToClipboard.njk" import copyToClipboard %}
 
-<main class="flex flex-col items-center gap-half-section py-fluid-inline md:py-half-section grow w-full">
+<main class="flex flex-col items-center gap-half-section pt-half-section pb-fluid-inline md:py-half-section grow w-full">
     {% call container({size:"narrow"}, {class:"text-pretty justify-items-center text-center gap-8"}) %}
             <h1 class="text-xl">
                 Thanks!
@@ -28,6 +28,6 @@ eleventyExcludeFromCollections: true
             </div>
     {% endcall %}
     {% call container({size:"narrow"},{class:"place-content-center"}) %}
-        <div class="border max-md:row-1 md:sticky top-half-section max-w-150 overflow-hidden"><img class="w-full object-cover object-top" src="{{ eventDetails.graphic }}" alt=""></div>
+        <div class="border max-w-150 overflow-hidden"><img class="w-full object-cover object-top" src="{{ eventDetails.graphic }}" alt=""></div>
     {% endcall %}
 </main>
