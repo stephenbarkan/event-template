@@ -11,9 +11,6 @@ content:
         blockKey: type
         list: true
         blocks:
-        - name: input
-          label: Add Input field
-          component: input
   - name: global
     label: Site data
     type: file
