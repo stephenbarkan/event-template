@@ -5,14 +5,14 @@ content:
     type: file
     path: _data/fields.json
     fields:
-      - name: fields
+      - name: formFields
         label: Fields
         type: block
         list: true
         blocks:
         - name: input
           label: Add Input field
-          component: input # Assumes a 'hero' component is defined and that its type is
+          component: input
   - name: global
     label: Site data
     type: file
@@ -66,7 +66,6 @@ content:
       - name: description
         label: Event description
         type: rich-text
-
 components:
   input:
     label: Input
