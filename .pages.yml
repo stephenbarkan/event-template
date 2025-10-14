@@ -13,9 +13,6 @@ content:
         - name: input
           label: Add Input field
           component: input
-        - name: accordion
-          label: Add Accordion
-          component: accordion
   - name: global
     label: Site data
     type: file
