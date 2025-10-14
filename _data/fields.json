@@ -1,0 +1,17 @@
+{
+  "formFields": [
+    {
+      "_block": "input",
+      "props": {
+        "name": "test",
+        "label": "Testing",
+        "description": "Let's see what happens!"
+      },
+      "fieldAttrs": {
+        "type": "text",
+        "placeholder": "Placeholders are cool",
+        "required": true
+      }
+    }
+  ]
+}
