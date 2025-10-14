@@ -1,19 +1,5 @@
 media: assets/uploads
 content:
-  - name: testing
-    label: Testing
-    type: file
-    path: _data/fields.json
-    fields:
-      - name: formFields
-        label: Fields
-        type: block
-        blockKey: macro
-        list: true
-        blocks:
-        - name: input
-          label: Input
-          component: input
   - name: global
     label: Site data
     type: file
