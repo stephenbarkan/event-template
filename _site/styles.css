@@ -560,6 +560,10 @@
     border-top-style: var(--tw-border-style);
     border-top-width: 1px;
   }
+  .border-b {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 1px;
+  }
   .border-b-2 {
     border-bottom-style: var(--tw-border-style);
     border-bottom-width: 2px;
@@ -664,6 +668,9 @@
   }
   .py-section {
     padding-block: var(--space-section);
+  }
+  .py-site-inline {
+    padding-block: var(--space-site-inline);
   }
   .pt-6 {
     padding-top: calc(var(--spacing) * 6);
