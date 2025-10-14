@@ -1,5 +1,9 @@
 media: assets/uploads
 content:
+  - name: testing
+    label: Testing
+    type: file
+    path: _data/fields.json
   - name: global
     label: Site data
     type: file
