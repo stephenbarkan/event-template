@@ -8,10 +8,11 @@ content:
       - name: formFields
         label: Fields
         type: block
+        blockKey: macro
         list: true
         blocks:
         - name: input
-          label: Add Input field
+          label: Input
           component: input
   - name: global
     label: Site data
