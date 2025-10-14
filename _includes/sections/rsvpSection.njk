@@ -76,7 +76,7 @@
                 props={
                     name: "contact-method",
                     label: contactMethodLabel,
-                    description: "So we can send you the location!"
+                    description: ""
                 },
                 attrs={class:"w-full"},
                 fieldAttrs={
@@ -119,7 +119,7 @@
         </div>
         <div class="grid md:grid-cols-2 border-t w-full items-stretch border-hue">
             <div class="text-lg max-md:border-b md:border-r px-fluid-inline md:justify-center md:px-8 border-hue py-6 flex flex-col gap-2">
-                <span class="text-lg flex gap-4 items-center">Total: <span class="ml-auto text-neutral" x-text="updateTotal()"></span></span>
+                <span class="text-lg flex gap-4 items-center">Ticket price: <span class="ml-auto text-neutral" x-text="updateTotal()"></span></span>
                 <small x-show="payment" class="text-sm opacity-70 text-neutral text-pretty" x-text="paymentMessages[payment]"></small>
             </div>
             <div class="py-8 px-fluid-inline md:px-8 flex items-center">{{ button({label: "Submit RSVP", type:"button", size:"base", variant: "ink"}, {type:"submit", class:"w-full"}) }}</div>

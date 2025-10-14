@@ -25,7 +25,7 @@
     --space-site-inline: 1rem;
     --space-section: 6rem;
     --space-half-section: 3rem;
-    --space-tube: 4rem;
+    --space-tube: 4.5rem;
 
     /* > md */
     @media screen and (min-width: 640px) {
@@ -38,8 +38,8 @@
       --space-half-section: 4rem;
 
       --text-2xl: 72px;
-      --text-xl: 64px;
-      --text-lg: 28px;
+      --text-xl: 56px;
+      --text-lg: 26px;
       --text-base: 21px;
       --text-sm: 18px;
       --text-button: 24px;

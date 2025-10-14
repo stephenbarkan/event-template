@@ -1,7 +1,7 @@
 {% from "components/markdown.njk" import markdown %}
 
 {% macro metadata(props={}) %}
-    <dl class="flex flex-col gap-4 not-last:border-b border-b-hue not-last:pb-12">
+    <dl class="flex flex-col gap-4 not-last:border-b border-b-hue not-last:pb-half-section">
         <dt class="text-lg">{{ props.term }}</dt>
         <dd>
             {{ markdown(
@@ -18,7 +18,7 @@
 
 {% call container({size: "wide", type:"cols-2"},{class:"gap-half-section md:gap-section md:gap-fluid-inline justify-items-center"}) %}
 
-    <div class="flex flex-col gap-half-section">
+    <div class="flex flex-col gap-section">
         <div class="flex flex-col gap-8">
             <div class="flex flex-col gap-6">
                 <p class="text-pretty text-lg">You're invited to</p>
@@ -55,7 +55,6 @@
                 details: eventDetails.ticketInfo
             })}}
         </div>
-
     </div>
     <div class="border max-md:row-1 md:sticky top-half-section h-fit max-md:aspect-square overflow-hidden"><img class="w-full object-cover object-top" src="{{ eventDetails.graphic }}" alt=""></div>
 {% endcall %}

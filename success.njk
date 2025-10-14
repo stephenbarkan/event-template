@@ -6,15 +6,28 @@ eleventyExcludeFromCollections: true
 
 {% from "components/button.njk" import button %}
 {% from "components/container.njk" import container %}
+{% from "components/copyToClipboard.njk" import copyToClipboard %}
+
 <main class="flex flex-col items-center gap-section py-section grow w-full">
-    {% call container({}, {class:"text-pretty justify-items-center text-center gap-10"}) %}
+    {% call container({size:"narrow"}, {class:"text-pretty justify-items-center text-center gap-10"}) %}
             <h1 class="text-xl">
                 Thanks!
             </h1>
-            <p class="text-base"> We'll send you the address and other details soon.</p>
-            {{ button({label:"Return home", type:"button", variant:"ink", size:"base"},{href:"/", class:""}) }}
+            <p class="text-base">We can't wait to see you there! Please share the event with your friends.</p>
+            <div class="flex max-md:flex-col gap-6 w-full md:items-center justify-center">
+                {% call copyToClipboard(
+                    props={
+                        input: global.siteDomain,
+                        toastMessage: "RSVP link copied to clipboard!"
+                    },
+                    attrs={}
+                ) %}
+                    {{ button({label:"Share RSVP link", type:"button", variant:"ink", size:"base"},{@click:"copy", class:"w-full"}) }}
+                {% endcall %}
+                {{ button({label:"Return home", type:"button", variant:"hue", size:"base"},{href:"/", class:""}) }}
+            </div>
     {% endcall %}
     {% call container({size:"narrow"},{class:"place-content-center"}) %}
-        <div class="border max-md:row-1 md:sticky top-half-section h-fit max-w-120 aspect-square overflow-hidden"><img class="w-full object-cover object-top" src="{{ eventDetails.graphic }}" alt=""></div>
+        <div class="border max-md:row-1 md:sticky top-half-section h-fit aspect-square overflow-hidden"><img class="w-full object-cover object-top" src="{{ eventDetails.graphic }}" alt=""></div>
     {% endcall %}
 </main>

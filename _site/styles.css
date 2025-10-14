@@ -220,6 +220,9 @@
   .top-0 {
     top: calc(var(--spacing) * 0);
   }
+  .top-4 {
+    top: calc(var(--spacing) * 4);
+  }
   .top-full {
     top: 100%;
   }
@@ -232,6 +235,9 @@
   .right-0 {
     right: calc(var(--spacing) * 0);
   }
+  .right-fluid-inline {
+    right: 5vw;
+  }
   .bottom-0 {
     bottom: calc(var(--spacing) * 0);
   }
@@ -243,6 +249,9 @@
   }
   .left-0 {
     left: calc(var(--spacing) * 0);
+  }
+  .left-fluid-inline {
+    left: 5vw;
   }
   .z-10 {
     z-index: 10;
@@ -363,9 +372,6 @@
   }
   .w-full {
     width: 100%;
-  }
-  .max-w-120 {
-    max-width: calc(var(--spacing) * 120);
   }
   .max-w-\[var\(--container-narrow\)\] {
     max-width: var(--container-narrow);
@@ -829,9 +835,9 @@
       padding-bottom: calc(var(--spacing) * 8);
     }
   }
-  .not-last\:pb-12 {
+  .not-last\:pb-half-section {
     &:not(*:last-child) {
-      padding-bottom: calc(var(--spacing) * 12);
+      padding-bottom: var(--space-half-section);
     }
   }
   .\*\:not-last-of-type\:translate-y-2 {
@@ -926,6 +932,11 @@
       aspect-ratio: 1 / 1;
     }
   }
+  .max-md\:flex-col {
+    @media (width < 48rem) {
+      flex-direction: column;
+    }
+  }
   .max-md\:border-b {
     @media (width < 48rem) {
       border-bottom-style: var(--tw-border-style);
@@ -976,6 +987,11 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
+  .md\:items-center {
+    @media (width >= 48rem) {
+      align-items: center;
+    }
+  }
   .md\:justify-center {
     @media (width >= 48rem) {
       justify-content: center;
@@ -995,12 +1011,6 @@
     @media (width >= 48rem) {
       border-right-style: var(--tw-border-style);
       border-right-width: 1px;
-    }
-  }
-  .md\:border-l {
-    @media (width >= 48rem) {
-      border-left-style: var(--tw-border-style);
-      border-left-width: 1px;
     }
   }
   .md\:px-8 {
@@ -1251,14 +1261,14 @@
     --space-site-inline: 1rem;
     --space-section: 6rem;
     --space-half-section: 3rem;
-    --space-tube: 4rem;
+    --space-tube: 4.5rem;
     @media screen and (min-width: 768px) {
       --space-site-inline: 3rem;
       --space-section: 8rem;
       --space-half-section: 4rem;
       --text-2xl: 72px;
-      --text-xl: 64px;
-      --text-lg: 28px;
+      --text-xl: 56px;
+      --text-lg: 26px;
       --text-base: 21px;
       --text-sm: 18px;
       --text-button: 24px;
