@@ -373,6 +373,15 @@
   .w-full {
     width: 100%;
   }
+  .max-w-80 {
+    max-width: calc(var(--spacing) * 80);
+  }
+  .max-w-120 {
+    max-width: calc(var(--spacing) * 120);
+  }
+  .max-w-150 {
+    max-width: calc(var(--spacing) * 150);
+  }
   .max-w-\[var\(--container-narrow\)\] {
     max-width: var(--container-narrow);
   }
@@ -666,6 +675,12 @@
   .py-8 {
     padding-block: calc(var(--spacing) * 8);
   }
+  .py-fluid-inline {
+    padding-block: 5vw;
+  }
+  .py-half-section {
+    padding-block: var(--space-half-section);
+  }
   .py-section {
     padding-block: var(--space-section);
   }
@@ -950,6 +965,11 @@
       border-bottom-width: 1px;
     }
   }
+  .max-sm\:flex-col {
+    @media (width < 36rem) {
+      flex-direction: column;
+    }
+  }
   .xs\:hidden {
     @media (width >= 28rem) {
       display: none;
@@ -962,9 +982,19 @@
       }
     }
   }
+  .sm\:flex-col-reverse {
+    @media (width >= 36rem) {
+      flex-direction: column-reverse;
+    }
+  }
   .sm\:flex-row {
     @media (width >= 36rem) {
       flex-direction: row;
+    }
+  }
+  .sm\:items-center {
+    @media (width >= 36rem) {
+      align-items: center;
     }
   }
   .sm\:gap-2 {
@@ -992,6 +1022,11 @@
   .md\:grid-cols-2 {
     @media (width >= 48rem) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .md\:flex-col-reverse {
+    @media (width >= 48rem) {
+      flex-direction: column-reverse;
     }
   }
   .md\:items-center {
@@ -1028,6 +1063,11 @@
   .md\:py-8 {
     @media (width >= 48rem) {
       padding-block: calc(var(--spacing) * 8);
+    }
+  }
+  .md\:py-half-section {
+    @media (width >= 48rem) {
+      padding-block: var(--space-half-section);
     }
   }
   .md\:pt-7 {
