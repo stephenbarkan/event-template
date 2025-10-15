@@ -1221,6 +1221,7 @@
 .markdown a, .markdown a * {
   color: var(--md-link-color);
   text-decoration: underline;
+  text-underline-offset: 3px;
   text-decoration-thickness: 1px;
 }
 .markdown a:hover, .markdown a:hover * {
