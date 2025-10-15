@@ -14,7 +14,6 @@ eleventyExcludeFromCollections: true
                 Thanks!
             </h1>
             <p class="text-base">We can't wait to see you there! Please consider sharing the event with your friends.</p>
-            <div class="flex max-sm:flex-col gap-4 w-full sm:items-center justify-center">
                 {% call copyToClipboard(
                     props={
                         input: global.siteDomain,
@@ -24,8 +23,7 @@ eleventyExcludeFromCollections: true
                 ) %}
                     {{ button({label:"Share RSVP link", type:"button", variant:"ink", size:"base"},{@click:"copy", class:"w-full"}) }}
                 {% endcall %}
-                {{ button({label:"Return home", type:"button", variant:"hue", size:"base"},{href:"/", class:""}) }}
-            </div>
+                {{ button({label:"Return home", type:"link", variant:"hue", size:"base"},{href:"/", class:""}) }}
     {% endcall %}
     {% call container({size:"narrow"},{class:"place-content-center"}) %}
         <div class="border max-w-150 overflow-hidden"><img class="w-full object-cover object-top" src="{{ eventDetails.graphic }}" alt=""></div>
