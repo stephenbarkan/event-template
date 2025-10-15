@@ -43,7 +43,7 @@ content:
         type: string
       - name: date
         label: Event date
-        type: string
+        type: rich-text
       - name: location
         label: Event location
         type: rich-text
