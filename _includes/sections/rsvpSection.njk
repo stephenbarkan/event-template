@@ -11,7 +11,7 @@
 {% set nameLabel = "RSVPing as..." %}
 {% set attendeesLabel = "Number of attendees" %}
 {% set contactMethodLabel = "E-mail address" %}
-{% set ticketTierLabel = "Choose a ticket tier" %}
+{% set ticketTierLabel = "Choose the ticket tier the best matches your current financial situation" %}
 {% set paymentLabel = "Pay for your tickets now or at the door?" %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
@@ -108,7 +108,7 @@
                         "$15-25 if you’re managing",
                         "$25-50 if you’re financially comfortable"
                     ],
-                    description: "Choose the tier that most closely fits your current financial situation."
+                    description: "Prices are per person."
                 },
                 attrs={class:"w-full"},
                 fieldAttrs={
@@ -123,7 +123,8 @@
                     options: [
                         "I’ll pay now (Thank you!)",
                         "I’ll pay at the door"
-                    ]
+                    ],
+                    description: "Venmo @CCHRP now or pay in cash/Venmo at the door."
                 },
                 attrs={class:"w-full"},
                 fieldAttrs={

@@ -412,10 +412,6 @@
     --tw-translate-x: calc(80% * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
-  .-translate-x-full {
-    --tw-translate-x: -100%;
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
   .-translate-y-2 {
     --tw-translate-y: calc(var(--spacing) * -2);
     translate: var(--tw-translate-x) var(--tw-translate-y);
@@ -1162,10 +1158,11 @@
   padding-inline-start: 4px;
 }
 .markdown ul li {
-  padding-inline-start: var(--space-half);
+  padding-inline-start: var(--space-1);
 }
 .markdown ul li::marker {
   font-size: 0.8em;
+  content: "*";
 }
 .markdown li + li {
   margin-block-start: var(--space-half);
@@ -1292,12 +1289,12 @@
     --text-sm: 16px;
     --text-icon: 1.3em;
     --space-site-inline: 1rem;
-    --space-section: 6rem;
-    --space-half-section: 3rem;
+    --space-section: 4rem;
+    --space-half-section: 2rem;
     --space-tube: 4.5rem;
     @media screen and (min-width: 768px) {
       --space-site-inline: 3rem;
-      --space-section: 7rem;
+      --space-section: 6rem;
       --space-half-section: 3rem;
       --text-2xl: 72px;
       --text-xl: 56px;

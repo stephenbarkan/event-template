@@ -23,8 +23,8 @@
     --text-icon: 1.3em;
 
     --space-site-inline: 1rem;
-    --space-section: 6rem;
-    --space-half-section: 3rem;
+    --space-section: 4rem;
+    --space-half-section: 2rem;
     --space-tube: 4.5rem;
 
     /* > md */
@@ -34,7 +34,7 @@
     /* > md */
     @media screen and (min-width: 768px) {
       --space-site-inline: 3rem;
-      --space-section: 7rem;
+      --space-section: 6rem;
       --space-half-section: 3rem;
 
       --text-2xl: 72px;

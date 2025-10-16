@@ -73,10 +73,11 @@
 }
 
 .markdown ul li {
-  padding-inline-start: var(--space-half);
+  padding-inline-start: var(--space-1);
 }
 .markdown ul li::marker {
   font-size: 0.8em;
+  content: "*";
 }
 
 /* small space between items to make it easier to distinguish from items that have two lines. */

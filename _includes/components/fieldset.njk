@@ -42,6 +42,7 @@ description: "
     <div class="{{ directionClasses["column"] }} @container">
 
         {% if props.label %}{{ fieldLabel(props={tag: "legend"}, fieldProps=props, fieldAttrs=fieldAttrs) }}{% endif %}
+        {% if props.description %}{{ fieldDescription(props) }}{% endif %}
 
         <div class="{{ directionClasses["column"] }}">
             {% set comma = joiner() %}
@@ -52,7 +53,6 @@ description: "
                 </div>
             </template>
         </div>
-        {% if props.description %}{{ fieldDescription(props) }}{% endif %}
     </div>
 </fieldset>
 

@@ -46,7 +46,8 @@
     )}}
     {% endif %}
     {% call button({type:"button", size:"sm", variant:"hue"}, {@click:"expanded = !expanded", title:"Close visualizer"}) %}
-        <span class="text-icon">×</span>
+        <span x-show="!expanded" class="text-icon">›</span>
+        <span x-show="expanded" class="text-icon">‹</span>
         <span class="text-icon">{{ props.icon }}</span>
     {% endcall%}
 </div>

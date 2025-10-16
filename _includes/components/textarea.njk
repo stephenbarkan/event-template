@@ -39,6 +39,8 @@ description: "
     class="{% if props.direction %}{{ directionClasses[props.direction] }}{% else %}{{ directionClasses['column'] }}{% endif %} {{ attrs.class }}">
 
     {% if props.label %}{{ fieldLabel(props={tag: "label"}, fieldProps=props, fieldAttrs=fieldAttrs) }}{% endif %}
+    {% if props.description %}{{ fieldDescription(props) }}{% endif %}
+
     <span class="{{ fieldWrapperStyles }}">
         <textarea
             {% if fieldAttrs.value %}x-init="$dispatch('input-{{ props.name }}', '{{ fieldAttrs.value }}')"{% endif %}
@@ -50,7 +52,6 @@ description: "
             class="{{ fieldStyles }} {{ fieldAttrs.class }}">
         </textarea>
     </span>
-    {% if props.description %}{{ fieldDescription(props) }}{% endif %}
 
 </div>
 

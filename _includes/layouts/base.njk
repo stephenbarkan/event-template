@@ -42,9 +42,6 @@
         <meta name="generator" content="{{ eleventy.generator }}">
         <link rel="icon" type="image/x-icon" href="{{ global.favicon }}">
         <link rel="stylesheet" href="/styles.css">
-
-        <script defer src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
-
     </head>
     <body class="font-body text-base text-neutral antialiased flex flex-col min-h-dvh items-center bg-surface pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]">
         {% if global.announcementBannerContent %}
@@ -59,6 +56,8 @@
 
         {{ toaster() }}
 
+        <script defer src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
         <script defer src="https://unpkg.com/alpinejs@3.14.9/dist/cdn.min.js"></script>
     </body>
 </html>
