@@ -7,16 +7,22 @@ eleventyExcludeFromCollections: true
 {% from "components/button.njk" import button %}
 {% from "components/container.njk" import container %}
 {% from "components/copyToClipboard.njk" import copyToClipboard %}
+{% from "components/markdown.njk" import markdown %}
 
 <main class="flex flex-col items-center gap-half-section pt-half-section pb-fluid-inline md:py-half-section grow w-full">
-    {% call container({size:"narrow"}, {class:"text-pretty justify-items-center gap-8"}) %}
+    {% call container({size:"narrow"}, {class:"text-pretty text-center justify-items-center gap-8"}) %}
             <h1 class="w-full text-xl">
-                Thanks!
+                {{ submissionPage.title }}
             </h1>
-            <p class="text-base">We can't wait to see you there! Here's the info one more time.</p>
-            <p class="text-base">We can't wait to see you there!</p>
+            {{ markdown(
+                props={
+                    content: submissionPage.content,
+                    transform: true
+                },
+                attrs={}
+            ) }}
 
-            <p class="text-base">Please consider sharing the event with your friends.</p>
+            <h2 class="text-lg">Please consider sharing the event with your friends.</h2>
                 {% call copyToClipboard(
                     props={
                         input: global.siteDomain,
