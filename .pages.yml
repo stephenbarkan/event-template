@@ -50,7 +50,7 @@ content:
       - name: ticketInfo
         label: Ticket info
         type: rich-text
-      - name: description
+      - name: body
         label: Event description
         type: rich-text
   - name: success
