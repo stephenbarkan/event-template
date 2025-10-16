@@ -38,7 +38,7 @@
 
   --color-*: initial;
   --color-transparent: transparent;
-  --color-hue: color(display-p3 0.670588 0.356863 0.784314 / 1);
+  --color-hue: color(display-p3 0.73 0.29 0.89);
   --color-surface: #211a15;
   --color-neutral: #ecd1f6;
 

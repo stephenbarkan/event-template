@@ -25,7 +25,7 @@
     --text-button: var(--text-button);
     --container-wide: 80rem;
     --container-narrow: 50rem;
-    --color-hue: color(display-p3 0.670588 0.356863 0.784314 / 1);
+    --color-hue: color(display-p3 0.73 0.29 0.89);
     --color-neutral: #ecd1f6;
     --spacing-site-inline: var(--space-site-inline);
     --spacing-tube: var(--space-tube);
@@ -583,10 +583,10 @@
     border-style: dotted;
   }
   .border-hue {
-    border-color: color(display-p3 0.670588 0.356863 0.784314 / 1);
+    border-color: color(display-p3 0.73 0.29 0.89);
   }
   .border-hue\/75 {
-    border-color: color-mix(in oklab, color(display-p3 0.670588 0.356863 0.784314 / 1) 75%, transparent);
+    border-color: color-mix(in oklab, color(display-p3 0.73 0.29 0.89) 75%, transparent);
   }
   .border-neutral {
     border-color: #ecd1f6;
@@ -595,7 +595,7 @@
     border-color: #211a15;
   }
   .bg-hue {
-    background-color: color(display-p3 0.670588 0.356863 0.784314 / 1);
+    background-color: color(display-p3 0.73 0.29 0.89);
   }
   .bg-neutral {
     background-color: #ecd1f6;
@@ -766,7 +766,7 @@
     color: firebrick;
   }
   .text-hue {
-    color: color(display-p3 0.670588 0.356863 0.784314 / 1);
+    color: color(display-p3 0.73 0.29 0.89);
   }
   .text-lg {
     color: var(--color-hue);
@@ -776,9 +776,6 @@
   }
   .text-neutral\/70 {
     color: color-mix(in oklab, #ecd1f6 70%, transparent);
-  }
-  .text-neutral\/75 {
-    color: color-mix(in oklab, #ecd1f6 75%, transparent);
   }
   .text-surface {
     color: #211a15;
@@ -849,7 +846,7 @@
   }
   .not-last\:border-b-hue\/75 {
     &:not(*:last-child) {
-      border-bottom-color: color-mix(in oklab, color(display-p3 0.670588 0.356863 0.784314 / 1) 75%, transparent);
+      border-bottom-color: color-mix(in oklab, color(display-p3 0.73 0.29 0.89) 75%, transparent);
     }
   }
   .not-last\:pb-8 {
@@ -892,7 +889,7 @@
   }
   .backdrop\:bg-hue\/35 {
     &::backdrop {
-      background-color: color-mix(in oklab, color(display-p3 0.670588 0.356863 0.784314 / 1) 35%, transparent);
+      background-color: color-mix(in oklab, color(display-p3 0.73 0.29 0.89) 35%, transparent);
     }
   }
   .\*\:last-of-type\:z-10 {
