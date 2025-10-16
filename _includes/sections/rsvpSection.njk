@@ -4,6 +4,7 @@
 {% from "components/fieldset.njk" import fieldset %}
 {% from "components/button.njk" import button %}
 {% from "components/incrementer.njk" import incrementer %}
+{% from "components/marquee.njk" import marquee %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -44,7 +45,20 @@
         netlify
         tabindex="0"
         class="w-full gap-half-section grid border border-hue pt-half-section">
-        <h2 class="text-xl text-center text-hue text-balance px-fluid-inline">RSVP</h2>
+        {% call marquee(
+            props={
+                speed: "25s",
+                pauseOnHover: false
+            },
+            attrs={}
+        ) %}
+            <h2 class="text-xl w-full flex justify-around text-center text-hue text-balance">
+                <span>RSVP</span>
+                <span>RSVP</span>
+                <span>RSVP</span>
+                <span>RSVP</span>
+            </h2>
+        {% endcall %}
         <div class="flex flex-col items-center gap-half-section text-hue px-fluid-inline">
             {{ input(
                 props={
@@ -119,15 +133,15 @@
         </div>
         {# <div class="grid border-t w-full items-stretch border-hue">
             <div class="text-lg border-b px-fluid-inline md:px-8 border-hue py-6 flex flex-col gap-2">
-                <span class="text-lg flex gap-4 items-center">Ticket price: <span class="ml-auto text-neutral" x-text="updateTotal()"></span></span>
-                <small x-show="payment" class="text-sm opacity-70 text-neutral text-pretty" x-text="paymentMessages[payment]"></small>
+                <span class="text-lg flex gap-4 items-center">Please pay: <span class="text-neutral" x-text="updateTotal()"></span></span>
+                <small x-show="payment" class="text-base text-neutral text-pretty" x-text="paymentMessages[payment]"></small>
             </div>
             <div class="py-8 px-fluid-inline md:px-8 flex items-center">{{ button({label: "Submit RSVP", type:"button", size:"base", variant: "ink"}, {type:"submit", class:"w-full"}) }}</div>
         </div> #}
-        <div class="grid md:grid-cols-2 border-t w-full items-stretch border-hue">
-            <div class="text-lg max-md:border-b md:border-r px-fluid-inline md:justify-center md:px-6 border-hue py-8 flex flex-col gap-2">
-                <span class="text-lg flex gap-4 items-center">Ticket price: <span class="ml-auto text-neutral" x-text="updateTotal()"></span></span>
-                <small x-show="payment" class="text-sm opacity-70 text-neutral text-pretty" x-text="paymentMessages[payment]"></small>
+        <div class="grid md:grid-cols-3 border-t w-full items-stretch border-hue">
+            <div class="md:col-span-2 text-lg max-md:border-b md:border-r px-fluid-inline md:justify-center md:px-6 border-hue py-8 flex flex-col gap-3">
+                <span class="text-lg flex gap-4 items-center">Please pay: <span class="ml-auto text-neutral" x-text="updateTotal()"></span></span>
+                <small x-show="payment" class="text-sm text-neutral text-pretty" x-text="paymentMessages[payment]"></small>
             </div>
             <div class="py-8 px-fluid-inline md:px-6 flex items-center">{{ button({label: "Submit RSVP", type:"button", size:"base", variant: "ink"}, {type:"submit", class:"w-full"}) }}</div>
         </div>

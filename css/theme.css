@@ -73,10 +73,6 @@
   --animate-duration: calc(--value(integer) * 1s);
 }
 
-/* @utility container {
-  width: calc(100% - 2 * var(--spacing-site-inline));
-} */
-
 @utility grid-overlap {
   & > * {
     grid-column: 1 / 1;

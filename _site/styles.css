@@ -978,6 +978,11 @@
       position: sticky;
     }
   }
+  .md\:col-span-2 {
+    @media (width >= 48rem) {
+      grid-column: span 2 / span 2;
+    }
+  }
   .md\:-ml-2 {
     @media (width >= 48rem) {
       margin-left: calc(var(--spacing) * -2);
@@ -986,6 +991,11 @@
   .md\:grid-cols-2 {
     @media (width >= 48rem) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .md\:grid-cols-3 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
   .md\:justify-center {
@@ -1271,8 +1281,8 @@
     --space-tube: 4.5rem;
     @media screen and (min-width: 768px) {
       --space-site-inline: 3rem;
-      --space-section: 8rem;
-      --space-half-section: 4rem;
+      --space-section: 7rem;
+      --space-half-section: 3rem;
       --text-2xl: 72px;
       --text-xl: 56px;
       --text-lg: 26px;
