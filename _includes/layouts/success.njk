@@ -12,12 +12,12 @@ eleventyExcludeFromCollections: true
 <main class="flex flex-col items-center gap-half-section pt-half-section pb-fluid-inline md:py-half-section grow w-full">
     {% call container({size:"narrow"}, {class:"text-pretty text-center justify-items-center gap-8"}) %}
             <h1 class="w-full text-xl">
-                {{ submissionPage.title }}
+                {{ title }}
             </h1>
             {{ markdown(
                 props={
-                    content: submissionPage.content,
-                    transform: true
+                    content: content,
+                    transform: false
                 },
                 attrs={}
             ) }}
