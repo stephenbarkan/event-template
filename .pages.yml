@@ -56,7 +56,7 @@ content:
   - name: success
     label: Submission page
     type: file
-    path: success.njk
+    path: success.md
     fields:
       - name: title
         label: Page title
