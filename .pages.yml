@@ -30,7 +30,7 @@ content:
   - name: event
     label: Event details
     type: file
-    path: success.njk
+    path: _data/eventDetails.json
     fields:
       - name: graphic
         label: Event graphic
