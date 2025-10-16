@@ -58,7 +58,7 @@ description: "
     <div
         x-ref="marqueeTrack"
         style="--animate-duration: var(--marquee-duration)"
-        class="relative flex w-full animate-marquee"
+        class="relative flex w-full animate-marquee {{ props.gap }}"
         {% if props.pauseOnHover %}x-bind:class="{ 'hover:[animation-play-state:paused]': pauseOnHover }"{% endif %}
     >
     <div x-ref="marqueeList" class="flex items-center justify-around min-w-full shrink-0 flex-nowrap">

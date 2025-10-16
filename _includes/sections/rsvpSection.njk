@@ -48,11 +48,13 @@
         {% call marquee(
             props={
                 speed: "25s",
-                pauseOnHover: false
+                pauseOnHover: false,
+                gap: "gap-16"
             },
             attrs={}
         ) %}
-            <h2 class="text-xl w-full flex justify-around text-center text-hue text-balance">
+            <h2 class="text-xl w-full flex gap-16 text-hue">
+                <span>RSVP</span>
                 <span>RSVP</span>
                 <span>RSVP</span>
                 <span>RSVP</span>
@@ -140,8 +142,9 @@
             <div class="py-8 px-fluid-inline md:px-8 flex items-center">{{ button({label: "Submit RSVP", type:"button", size:"base", variant: "ink"}, {type:"submit", class:"w-full"}) }}</div>
         </div> #}
         <div class="grid md:grid-cols-3 border-t w-full items-stretch border-hue">
-            <div class="md:col-span-2 text-lg max-md:border-b md:border-r px-fluid-inline md:justify-center md:px-6 border-hue py-8 flex flex-col gap-3">
-                <span class="text-lg flex gap-4 items-center">Please pay: <span class="ml-auto text-neutral" x-text="updateTotal()"></span></span>
+            <div class="md:col-span-2 text-lg max-md:border-b md:border-r px-fluid-inline md:justify-center md:px-6 border-hue py-8 grid grid-cols-[1fr_max-content] gap-3">
+                <span class="text-lg flex gap-4 items-center">Please pay:</span>
+                <span class="text-lg text-neutral flex items-center" x-text="updateTotal()"></span>
                 <small x-show="payment" class="text-sm text-neutral text-pretty" x-text="paymentMessages[payment]"></small>
             </div>
             <div class="py-8 px-fluid-inline md:px-6 flex items-center">{{ button({label: "Submit RSVP", type:"button", size:"base", variant: "ink"}, {type:"submit", class:"w-full"}) }}</div>

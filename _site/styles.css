@@ -443,6 +443,9 @@
   .grid-flow-col {
     grid-auto-flow: column;
   }
+  .grid-cols-\[1fr_max-content\] {
+    grid-template-columns: 1fr max-content;
+  }
   .flex-col {
     flex-direction: column;
   }
@@ -451,6 +454,9 @@
   }
   .flex-nowrap {
     flex-wrap: nowrap;
+  }
+  .flex-wrap {
+    flex-wrap: wrap;
   }
   .place-content-center {
     place-content: center;
@@ -1295,7 +1301,7 @@
     @media screen and (min-width: 768px) {
       --space-site-inline: 3rem;
       --space-section: 6rem;
-      --space-half-section: 3rem;
+      --space-half-section: 3.5rem;
       --text-2xl: 72px;
       --text-xl: 56px;
       --text-lg: 26px;
