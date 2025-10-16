@@ -43,7 +43,7 @@ content:
         type: string
       - name: date
         label: Event date
-        type: string
+        type: rich-text
       - name: location
         label: Event location
         type: rich-text
@@ -52,6 +52,17 @@ content:
         type: rich-text
       - name: description
         label: Event description
+        type: rich-text
+  - name: success
+    label: Submission page
+    type: file
+    path: _data/submissionPage.json
+    fields:
+      - name: title
+        label: Page title
+        type: string
+      - name: content
+        label: Page content
         type: rich-text
 components:
   input:
