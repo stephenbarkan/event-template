@@ -53,6 +53,17 @@ content:
       - name: description
         label: Event description
         type: rich-text
+  - name: success
+    label: Submission page
+    type: file
+    path: _data/submissionPage.json
+    fields:
+      - name: title
+        label: Page title
+        type: string
+      - name: content
+        label: Page content
+        type: rich-text
 components:
   input:
     label: Input
