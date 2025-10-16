@@ -61,7 +61,7 @@ content:
       - name: title
         label: Page title
         type: string
-      - name: content
+      - name: body
         label: Page content
         type: rich-text
 components:
