@@ -486,9 +486,6 @@
   .gap-4 {
     gap: calc(var(--spacing) * 4);
   }
-  .gap-5 {
-    gap: calc(var(--spacing) * 5);
-  }
   .gap-6 {
     gap: calc(var(--spacing) * 6);
   }
@@ -779,9 +776,6 @@
   .decoration-2 {
     text-decoration-thickness: 2px;
   }
-  .decoration-from-font {
-    text-decoration-thickness: from-font;
-  }
   .underline-offset-3 {
     text-underline-offset: 3px;
   }
@@ -950,11 +944,6 @@
       border-bottom-width: 1px;
     }
   }
-  .max-sm\:flex-col {
-    @media (width < 36rem) {
-      flex-direction: column;
-    }
-  }
   .xs\:hidden {
     @media (width >= 28rem) {
       display: none;
@@ -970,11 +959,6 @@
   .sm\:flex-row {
     @media (width >= 36rem) {
       flex-direction: row;
-    }
-  }
-  .sm\:items-center {
-    @media (width >= 36rem) {
-      align-items: center;
     }
   }
   .sm\:gap-2 {

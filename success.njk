@@ -9,11 +9,14 @@ eleventyExcludeFromCollections: true
 {% from "components/copyToClipboard.njk" import copyToClipboard %}
 
 <main class="flex flex-col items-center gap-half-section pt-half-section pb-fluid-inline md:py-half-section grow w-full">
-    {% call container({size:"narrow"}, {class:"text-pretty justify-items-center text-center gap-8"}) %}
-            <h1 class="text-xl">
+    {% call container({size:"narrow"}, {class:"text-pretty justify-items-center gap-8"}) %}
+            <h1 class="w-full text-xl">
                 Thanks!
             </h1>
-            <p class="text-base">We can't wait to see you there! Please consider sharing the event with your friends.</p>
+            <p class="text-base">We can't wait to see you there! Here's the info one more time.</p>
+            <p class="text-base">We can't wait to see you there!</p>
+
+            <p class="text-base">Please consider sharing the event with your friends.</p>
                 {% call copyToClipboard(
                     props={
                         input: global.siteDomain,
