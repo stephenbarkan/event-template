@@ -21,20 +21,13 @@ eleventyExcludeFromCollections: true
                 },
                 attrs={}
             ) }}
-
-            <h2 class="text-lg">Please consider sharing the event with your friends.</h2>
-                {% call copyToClipboard(
-                    props={
-                        input: global.siteDomain,
-                        toastMessage: "RSVP link copied to clipboard!"
-                    },
-                    attrs={}
-                ) %}
-                    {{ button({label:"Share RSVP link", type:"button", variant:"ink", size:"base"},{@click:"copy", class:"w-full"}) }}
-                {% endcall %}
-                {{ button({label:"Return home", type:"link", variant:"hue", size:"base"},{href:"/", class:""}) }}
     {% endcall %}
-    {% call container({size:"narrow"},{class:"place-content-center"}) %}
+    {% call container({size:"narrow"},{class:"text-pretty text-center justify-items-center gap-8"}) %}
+        <h2 class="text-lg">Please consider sharing the event with your friends!</h2>
+        {% call copyToClipboard(props={ input: global.siteDomain, toastMessage: "RSVP link copied to clipboard!"}, attrs={}) %}
+            {{ button({label:"Share RSVP link", type:"button", variant:"ink", size:"base"},{@click:"copy", class:"w-full"}) }}
+        {% endcall %}
         <div class="border max-w-150 overflow-hidden"><img class="w-full object-cover object-top" src="{{ eventDetails.graphic }}" alt=""></div>
+        {{ button({label:"Return home", type:"link", variant:"hue", size:"sm"},{href:"/", class:""}) }}
     {% endcall %}
 </main>

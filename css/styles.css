@@ -17,7 +17,7 @@
     --text-2xl: 46px;
     --text-xl: 36px;
     --text-lg: 22px;
-    --text-button: 24px;
+    --text-button: 22px;
     --text-base: 18px;
     --text-sm: 16px;
     --text-icon: 1.3em;
@@ -40,9 +40,9 @@
       --text-2xl: 72px;
       --text-xl: 56px;
       --text-lg: 26px;
+      --text-button: 23px;
       --text-base: 21px;
-      --text-sm: 18px;
-      --text-button: 24px;
+      --text-sm: 19px;
     }
 
     /* > lg */

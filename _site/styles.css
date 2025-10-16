@@ -307,9 +307,6 @@
   .mb-auto {
     margin-bottom: auto;
   }
-  .ml-auto {
-    margin-left: auto;
-  }
   .line-clamp-1 {
     overflow: hidden;
     display: -webkit-box;
@@ -454,12 +451,6 @@
   }
   .flex-nowrap {
     flex-wrap: nowrap;
-  }
-  .flex-wrap {
-    flex-wrap: wrap;
-  }
-  .place-content-center {
-    place-content: center;
   }
   .items-baseline {
     align-items: baseline;
@@ -629,6 +620,10 @@
     }
     background-image: linear-gradient(var(--tw-gradient-stops));
   }
+  .from-surface {
+    --tw-gradient-from: #211a15;
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
   .to-transparent {
     --tw-gradient-to: transparent;
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
@@ -724,9 +719,6 @@
   .font-display {
     font-family: monospace;
   }
-  .font-sans {
-    font-family: var(--font-sans);
-  }
   .text-icon {
     font-family: var(--font-body);
   }
@@ -781,6 +773,12 @@
   }
   .text-neutral {
     color: #ecd1f6;
+  }
+  .text-neutral\/70 {
+    color: color-mix(in oklab, #ecd1f6 70%, transparent);
+  }
+  .text-neutral\/75 {
+    color: color-mix(in oklab, #ecd1f6 75%, transparent);
   }
   .text-surface {
     color: #211a15;
@@ -1130,6 +1128,7 @@
 }
 .markdown h2, .markdown h3 {
   color: var(--md-text-color);
+  color: var(--md-heading-color);
   font-family: var(--md-heading-font);
   font-weight: var(--md-heading-font-weight);
   text-wrap: balance;
@@ -1290,7 +1289,7 @@
     --text-2xl: 46px;
     --text-xl: 36px;
     --text-lg: 22px;
-    --text-button: 24px;
+    --text-button: 22px;
     --text-base: 18px;
     --text-sm: 16px;
     --text-icon: 1.3em;
@@ -1305,9 +1304,9 @@
       --text-2xl: 72px;
       --text-xl: 56px;
       --text-lg: 26px;
+      --text-button: 23px;
       --text-base: 21px;
-      --text-sm: 18px;
-      --text-button: 24px;
+      --text-sm: 19px;
     }
   }
   .text-icon {

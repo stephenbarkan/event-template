@@ -37,9 +37,10 @@ description: "
     textColor: "color-neutral",
     linkColor: "color-link",
     radius: "radius",
-    headingFont: "font-sans",
+    headingFont: "",
     headingFontWeight: "500",
-    scale: "1.35"
+    headingColor: "color-hue",
+    scale: "1.25"
 } %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
@@ -49,6 +50,7 @@ description: "
     {% set mdFontSize %}--md-font-size: var(--{% if props.overrides.fontSize %}{{ props.overrides.fontSize }}{% else %}{{ themeDefaults.fontSize }}{% endif %});{% endset %}
     {% set mdLineHeight %}--md-line-height: var(--{% if props.overrides.fontSize %}{{ props.overrides.fontSize }}{% else %}{{ themeDefaults.fontSize }}{% endif %}--line-height);{% endset %}
     {% set mdTextColor %}--md-text-color: var(--{% if props.overrides.textColor %}{{ props.overrides.textColor }}{% else %}{{ themeDefaults.textColor }}{% endif %});{% endset %}
+    {% set mdHeadingColor %}--md-heading-color: var(--{% if props.overrides.headingColor %}{{ props.overrides.headingColor }}{% else %}{{ themeDefaults.headingColor }}{% endif %});{% endset %}
     {% set mdLinkColor %}--md-link-color: var(--{% if props.overrides.linkColor %}{{ props.overrides.linkColor }}{% else %}{{ themeDefaults.linkColor }}{% endif %});{% endset %}
     {% set mdRadius %}--md-radius: var(--{% if props.overrides.radius %}{{ props.overrides.radius }}{% else %}{{ themeDefaults.radius }}{% endif %});{% endset %}
     {% set mdHeadingFont %}--md-heading-font: var(--{% if props.overrides.headingFont %}{{ props.overrides.headingFont }}{% else %}{{ themeDefaults.headingFont }}{% endif %});{% endset %}
@@ -64,6 +66,7 @@ description: "
             {{ mdRadius }}
             {{ mdHeadingFont }}
             {{ mdHeadingFontWeight }}
+            {{ mdHeadingColor }}
             {{ mdScale }}
         "
         class="markdown {{ attrs.class }}">

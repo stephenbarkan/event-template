@@ -3,7 +3,9 @@ layout: layouts/success.njk
 title: RSVP received! Now please pay for your tickets :)
 ---
 
-Venmo [@CCHRP](https://www.venmo.com/u/cchrp) now, pay via cash or Venmo at the door.
+Venmo [@CCHRP](https://www.venmo.com/u/cchrp) now or pay via cash/Venmo at the door.
+
+## Event details
 
 |          |                                                                                                                                                                                                          |
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

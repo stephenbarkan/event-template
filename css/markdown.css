@@ -28,6 +28,7 @@
 .markdown h2,
 .markdown h3 {
   color: var(--md-text-color);
+  color: var(--md-heading-color);
   font-family: var(--md-heading-font);
   font-weight: var(--md-heading-font-weight);
   text-wrap: balance;
