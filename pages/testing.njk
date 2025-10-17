@@ -1,3 +1,79 @@
 ---
 layout: base
 ---
+
+{% from "components/container.njk" import container %}
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+{% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionClasses, fieldStyles, fieldsetOptionStyles, fieldWrapperStyles %}
+
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+{% macro input(props={}, attrs={}, fieldAttrs={}) %}
+    <input
+        x-model="{{ props.name }}"
+        name="{{ props.name }}"
+        id="{{ props.name }}"
+        {{ loopAttrs(fieldAttrs) }}
+        class="{{ fieldStyles }} {{ fieldWrapperStyles }} {{ fieldAttrs.class }}"
+    >
+{% endmacro %}
+
+{% macro fieldset(props={}, attrs={}, fieldAttrs={}) %}
+    <fieldset
+        id="{{ props.name }}"
+        name="{{ props.name }}"
+        class="{{ attrs.class }}"
+        {{ loopAttrs(attrs) }}
+    >
+        <div class="{{ directionClasses["column"] }}">
+            {% set comma = joiner() %}
+            {% for option in props.options %}
+                <div class="flex gap-2">
+                    <input
+                        :checked="{{ props.name }} === {{ loop.index  - 1}}"
+                        x-on:change="{{ props.name }} = {{ loop.index  - 1}}"
+                        id="{{ option.label }}"
+                        type="{{ fieldAttrs.type }}"
+                        name="{{ props.name }}"
+                        value="{{ option.value }}"
+                        class="accent-current w-[1.1em] h-[1.5em] shrink-0"/>
+                    <label class="{{ fieldsetOptionStyles }}" for="{{ option.label }}">{{ option.label }}</label>
+                </div>
+            {% endfor %}
+        </div>
+    </fieldset>
+{% endmacro %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% call container({size: "narrow", type: "cols-1"},{class:"py-section"}) %}
+
+    <form
+    id="form"
+    x-data="{
+        email: '',
+        ticketTier: null
+    }">
+
+        {{ input(
+            {name: 'email'},
+            {},
+            {type:'email'}) }}
+        {{ fieldset(
+            {
+                name: 'ticketTier',
+                options: [
+                    {label: "$10-15 if things are tight right now", value: "$10-15"},
+                    {label: "$15-25 if you’re managing", value: "$15-25"},
+                    {label: "$25-50 if you’re financially comfortable", value: "$25-50"}
+                ]
+            },
+            {},
+            {type:"radio"}) }}
+
+        <p>Email: <span x-text="email"></span></p>
+        <p>Ticket tier: <span x-text="ticketTier"></span></p>
+    </form>
+
+
+{% endcall %}
