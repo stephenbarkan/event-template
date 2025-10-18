@@ -1,6 +1,7 @@
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/input.njk" import input %}
+{% from "components/radio.njk" import radio %}
 {% from "components/fieldset.njk" import fieldset %}
 {% from "components/button.njk" import button %}
 {% from "components/incrementer.njk" import incrementer %}
@@ -17,138 +18,130 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% call container({size: "narrow"},{class:"gap-8 justify-items-center"}) %}
-<div
-    x-data="{
-            ticketTier: null,
-            attendees: 1,
-            ticketTiers: {
-                '$10-15 if things are tight right now': [10, 15],
-                '$15-25 if you’re managing': [15, 25],
-                '$25-50 if you’re financially comfortable': [25, 50]
-            },
-            payment: '',
-            paymentMessages: {
-                'I’ll pay now (Thank you!)': `Venmo @CCHRP with your name and 'party' in the description.`,
-                'I’ll pay at the door': 'We’ll accept cash or Venmo at the door!'
-            },
-            updateTotal() {
-                return this.ticketTier ? '$' + this.attendees * this.ticketTiers[this.ticketTier][0] + '-' + this.attendees * this.ticketTiers[this.ticketTier][1] : '$0'
-            }
-        }"
-        @input-attendees.window="attendees = $event.detail"
-        @fieldset-ticket-tier.window="ticketTier = $event.detail"
-        @fieldset-payment.window="payment = $event.detail">
-    <form
-        name="rsvp"
-        method="POST"
-        action="/success"
-        netlify
-        tabindex="0"
-        class="w-full gap-half-section grid border border-hue/75 pt-half-section">
-        {% call marquee(
-            props={
-                speed: "25s",
-                pauseOnHover: false,
-                gap: "gap-16"
-            },
-            attrs={}
-        ) %}
-            <h2 class="text-xl w-full flex gap-16 text-hue">
-                <span>RSVP</span>
-                <span aria-hidden="true">RSVP</span>
-                <span aria-hidden="true">RSVP</span>
-                <span aria-hidden="true">RSVP</span>
-                <span aria-hidden="true">RSVP</span>
-            </h2>
-        {% endcall %}
-        <div class="flex flex-col items-center gap-half-section text-hue px-fluid-inline">
-            {{ input(
-                props={
-                    name: "name",
-                    label: nameLabel,
-                    description: "The name you’d like us to use when you check in at the door."
+    <div
+        x-data="{
+                name: '',
+                email: '',
+                attendees: 1,
+                ticketTier: null,
+                payment: '',
+                ticketTiers: {
+                    1: [10, 15],
+                    2: [15, 25],
+                    3: [25, 50]
                 },
-                attrs={class:"w-full"},
-                fieldAttrs={
-                    type: "text",
-                    required: true,
-                    autocomplete: true
-                }
-            ) }}
-            {{ input(
-                props={
-                    name: "attendees",
-                    label: attendeesLabel
+                paymentMessages: {
+                    1: `Venmo @CCHRP with your name and 'party' in the description.`,
+                    2: 'We’ll accept cash or Venmo at the door!'
                 },
-                attrs={class:"w-full"},
-                fieldAttrs={
-                    type: "number",
-                    required: true,
-                    value: 1,
-                    min: 1
+                updateTotal() {
+                    return this.ticketTier ? '$' + this.attendees * this.ticketTiers[this.ticketTier][0] + '-' + this.attendees * this.ticketTiers[this.ticketTier][1] : '$0'
                 }
-            ) }}
-            {{ input(
+            }">
+        <form
+            name="rsvp"
+            method="POST"
+            action="/success"
+            netlify
+            tabindex="0"
+            class="w-full gap-half-section grid border border-hue/75 pt-half-section">
+            {% call marquee(
                 props={
-                    name: "contact-method",
-                    label: contactMethodLabel,
-                    description: ""
+                    speed: "25s",
+                    pauseOnHover: false,
+                    gap: "gap-16"
                 },
-                attrs={class:"w-full"},
-                fieldAttrs={
-                    type: "email",
-                    required: true
-                }
-            ) }}
-            {{ fieldset(
-                props={
-                    type: "radio",
-                    name: "ticket-tier",
-                    label: ticketTierLabel,
-                    options: [
-                        "$10-15 if things are tight right now",
-                        "$15-25 if you’re managing",
-                        "$25-50 if you’re financially comfortable"
-                    ],
-                    description: "Prices are per person."
-                },
-                attrs={class:"w-full"},
-                fieldAttrs={
-                    required: true
-                }
-            ) }}
-            {{ fieldset(
-                props={
-                    type: "radio",
-                    name: "payment",
-                    label: paymentLabel,
-                    options: [
-                        "I’ll pay now (Thank you!)",
-                        "I’ll pay at the door"
-                    ],
-                    description: "Venmo @CCHRP now or pay in cash/Venmo at the door."
-                },
-                attrs={class:"w-full"},
-                fieldAttrs={
-                    required: true
-                }
-            ) }}
-        </div>
-        {# <div class="grid border-t w-full items-stretch border-hue">
-            <div class="text-lg border-b px-fluid-inline md:px-8 border-hue py-6 flex flex-col gap-2">
-                <span class="text-lg flex gap-4 items-center">Please pay: <span class="text-neutral" x-text="updateTotal()"></span></span>
-                <small x-show="payment" class="text-base text-neutral text-pretty" x-text="paymentMessages[payment]"></small>
+                attrs={}
+            ) %}
+                <h2 class="text-xl w-full flex gap-16 text-hue">
+                    <span>RSVP</span>
+                    <span aria-hidden="true">RSVP</span>
+                    <span aria-hidden="true">RSVP</span>
+                    <span aria-hidden="true">RSVP</span>
+                    <span aria-hidden="true">RSVP</span>
+                </h2>
+            {% endcall %}
+            <div class="flex flex-col items-center gap-half-section text-hue px-fluid-inline">
+                {{ input(
+                    props={
+                        name: "name",
+                        label: nameLabel,
+                        description: "The name you’d like us to use when you check in at the door.",
+                        fieldAttrs: {
+                            type: "text",
+                            required: true,
+                            autocomplete: true
+                        }
+                    },
+                    attrs={class:"w-full"}
+                ) }}
+
+                {{ input(
+                    props={
+                        name: "contact-method",
+                        label: contactMethodLabel,
+                        description: "",
+                        fieldAttrs: {
+                            type: "email",
+                            required: true
+                        }
+                    },
+                    attrs={class:"w-full"}
+                ) }}
+
+                {{ input(
+                    props={
+                        name: "attendees",
+                        label: attendeesLabel,
+                        fieldAttrs:{
+                            type: "number",
+                            required: true,
+                            min: 1
+                        }
+                    },
+                    attrs={class:"w-full"}
+                ) }}
+
+                {{ radio(
+                    props={
+                        name: "ticketTier",
+                        label: ticketTierLabel,
+                        options: [
+                            {label: "$10-15 if things are tight right now", value: "$10-15"},
+                            {label: "$15-25 if you’re managing", value: "$15-25"},
+                            {label: "$25-50 if you’re financially comfortable", value: "$25-50"}
+                        ],
+                        fieldAttrs:{required: true},
+                        description: "Prices are per person."
+                    },
+                    attrs={class:"w-full"}
+                ) }}
+
+                {{ radio(
+                    props={
+                        name: "payment",
+                        label: paymentLabel,
+                        options: [
+                            {label: "I’ll pay now (Thank you!)", value: "Pay in advance"},
+                            {label: "I’ll pay at the door", value: "Pay at door"}
+                        ],
+                        fieldAttrs:{required: true},
+                        description: "Venmo @CCHRP now or pay in cash/Venmo at the door."
+                    },
+                    attrs={class:"w-full"}
+                ) }}
             </div>
-            <div class="py-8 px-fluid-inline md:px-8 flex items-center">{{ button({label: "Submit RSVP", type:"button", size:"base", variant: "ink"}, {type:"submit", class:"w-full"}) }}</div>
-        </div> #}
-        <div class="grid md:grid-cols-3 border-t w-full items-stretch border-hue/75">
-            <div class="md:col-span-2 text-lg max-md:border-b md:border-r px-fluid-inline md:justify-center md:px-6 border-hue/75 py-8 grid grid-cols-[1fr_max-content] gap-3">
-                <span class="text-lg flex gap-4 items-center">Please pay:</span>
-                <span class="text-lg text-neutral flex items-center" x-text="updateTotal()"></span>
-                <small x-show="payment" class="text-sm text-neutral/70 text-pretty" x-text="paymentMessages[payment]"></small>
+
+            <div class="grid md:grid-cols-3 border-t w-full items-stretch border-hue/75">
+                <div class="md:col-span-2 text-lg max-md:border-b md:border-r px-fluid-inline md:justify-center md:px-6 border-hue/75 py-8 grid grid-cols-[1fr_max-content] gap-3">
+                    <span class="text-lg flex gap-4 items-center">Please pay:</span>
+                    <span class="text-lg text-neutral flex items-center" x-text="updateTotal()"></span>
+                    <small x-show="payment" class="text-sm text-neutral/70 text-pretty" x-text="paymentMessages[payment]"></small>
+                </div>
+                <div class="py-8 px-fluid-inline md:px-6 flex items-center">{{ button({label: "Submit RSVP", type:"button", size:"base", variant: "ink"}, {type:"submit", class:"w-full"}) }}</div>
             </div>
-            <div class="py-8 px-fluid-inline md:px-6 flex items-center">{{ button({label: "Submit RSVP", type:"button", size:"base", variant: "ink"}, {type:"submit", class:"w-full"}) }}</div>
-        </div>
-    </form>
-</div>
+
+        </form>
+    </div>
+
 {% endcall %}

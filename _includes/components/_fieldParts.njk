@@ -11,26 +11,27 @@
 
 {% set fieldLabelStyles = "text-hue text-lg text-pretty" %}
 {% set fieldLabelRequiredStyles = "text-[firebrick]" %}
-{% set fieldWrapperStyles = "grow flex border-neutral border rounded-base min-h-tube" %}
-{% set fieldStyles = "grow text-neutral disabled:opacity-60 rounded-inherit px-3 py-4 w-full" %}
+{% set fieldWrapperStyles = "grow flex" %}
+{% set fieldStyles = "grow text-neutral disabled:opacity-60 border-neutral/70 hover:border-neutral active:border-neutral border rounded-base min-h-tube px-3 py-4 w-full" %}
 {% set fieldsetOptionStyles = "text-neutral" %}
 {% set fieldDescriptionStyles = "text-neutral/70 text-sm text-pretty" %}
 
 {# Macros ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% macro fieldLabel(props={}, attrs={}, fieldProps={}, fieldAttrs={}) %}
+{% macro fieldLabel(props={}, attrs={}) %}
     <{{ props.tag }}
-        {% if props.tag === "label" %}for="{{ fieldProps.name }}"{% endif %}
+        {% if props.tag === "label" %}for="{{ props.fieldProps.name }}"{% endif %}
         class="{{ fieldLabelStyles }} {{ attrs.class }}"
         {{ loopAttrs(attrs) }}
     >
-        {{ fieldProps.label }} {% if fieldAttrs.required %}<sup class="{{ fieldLabelRequiredStyles }}">*</sup>{% endif %}
+        {{ props.fieldProps.label }} {% if props.fieldProps.fieldAttrs.required %}<sup class="{{ fieldLabelRequiredStyles }}">*</sup>{% endif %}
     </{{ props.tag }}>
 {% endmacro %}
 
 {% macro fieldDescription(props={}, attrs={}) %}
     <small
         {{ loopAttrs(attrs) }}
-        class="{{ fieldDescriptionStyles }} {{ attrs.class }}">{{ props.description }}
+        class="{{ fieldDescriptionStyles }} {{ attrs.class }}">
+        {{ props.description }}
     </small>
 {% endmacro %}

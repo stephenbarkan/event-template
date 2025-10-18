@@ -1,0 +1,59 @@
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set radioMeta = {
+    args: '{{ radio(
+    props={
+        name: "",
+        label: "",
+        description: "",
+        options: [],
+        fieldAttrs: {}
+    },
+    attrs={}
+) }}',
+description: "
+- Dispatches event `fieldset-{{ props.name }}` when the value is updated.
+- You can get this value with `@fieldset-{{ props.name }}.window='{{ var }} = $event.detail'`
+"
+} %}
+
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionClasses, fieldStyles, fieldsetOptionStyles %}
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro radio(props={}, attrs={}) %}
+
+    <fieldset
+        name="{{ props.name }}"
+        class="{{ attrs.class }}"
+        {{ loopAttrs(attrs) }}
+    >
+        <div class="{{ directionClasses["column"] }}">
+
+    {% if props.label %}{{ fieldLabel({tag: "legend", fieldProps:props}) }}{% endif %}
+    {% if props.description %}{{ fieldDescription(props) }}{% endif %}
+
+            {% set comma = joiner() %}
+            {% for option in props.options %}
+                <div x-data="{ id: $id('{{ option.value }}')}" class="flex gap-2">
+                    <input
+                        :checked="{{ props.name }} === {{ loop.index }}"
+                        x-on:change="{{ props.name }} = {{ loop.index }}"
+                        :id="id"
+                        type="radio"
+                        name="{{ props.name }}"
+                        value="{{ option.value }}"
+                        {{ loopAttrs(props.fieldAttrs) }}
+                        class="accent-current w-[1.1em] h-[1.5em] shrink-0"/>
+                    <label class="{{ fieldsetOptionStyles }}" :for="id">{{ option.label }}</label>
+                </div>
+            {% endfor %}
+        </div>
+    </fieldset>
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% endmacro %}

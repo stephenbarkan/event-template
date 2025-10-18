@@ -28,6 +28,6 @@ eleventyExcludeFromCollections: true
             {{ button({label:"Share RSVP link", type:"button", variant:"ink", size:"base"},{@click:"copy", class:"w-full"}) }}
         {% endcall %}
         <div class="border max-w-150 overflow-hidden"><img class="w-full object-cover object-top" src="{{ eventDetails.graphic }}" alt=""></div>
-        {{ button({label:"Return home", type:"link", variant:"hue", size:"sm"},{href:"/", class:""}) }}
+        {{ button({label:"Return home", type:"link", variant:"hue", size:"inherit"},{href:"/", class:""}) }}
     {% endcall %}
 </main>

@@ -591,6 +591,9 @@
   .border-neutral {
     border-color: #ecd1f6;
   }
+  .border-neutral\/70 {
+    border-color: color-mix(in oklab, #ecd1f6 70%, transparent);
+  }
   .border-surface {
     border-color: #211a15;
   }
@@ -904,6 +907,13 @@
       visibility: visible;
     }
   }
+  .hover\:border-neutral {
+    &:hover {
+      @media (hover: hover) {
+        border-color: #ecd1f6;
+      }
+    }
+  }
   .hover\:no-underline {
     &:hover {
       @media (hover: hover) {
@@ -928,6 +938,11 @@
   .active\:scale-\[\.98\] {
     &:active {
       scale: .98;
+    }
+  }
+  .active\:border-neutral {
+    &:active {
+      border-color: #ecd1f6;
     }
   }
   .disabled\:opacity-60 {

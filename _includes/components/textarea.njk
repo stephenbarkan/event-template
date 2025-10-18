@@ -29,28 +29,25 @@ description: "
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
-{% macro textarea(props={}, attrs={}, fieldAttrs={}) %}
+{% macro textarea(props={}, attrs={}) %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <div
-    x-data="{value:'{% if fieldAttrs.value %}{{fieldAttrs.value}}{% endif %}'}"
+    {% if props.fieldAttrs.value %}x-init="{{ props.name }} = '{{ props.fieldAttrs.value }}'"{% endif %}
     {{ loopAttrs(attrs) }}
     class="{% if props.direction %}{{ directionClasses[props.direction] }}{% else %}{{ directionClasses['column'] }}{% endif %} {{ attrs.class }}">
 
-    {% if props.label %}{{ fieldLabel(props={tag: "label"}, fieldProps=props, fieldAttrs=fieldAttrs) }}{% endif %}
+    {% if props.label %}{{ fieldLabel({tag: "label", fieldProps:props}) }}{% endif %}
     {% if props.description %}{{ fieldDescription(props) }}{% endif %}
 
     <span class="{{ fieldWrapperStyles }}">
         <textarea
-            {% if fieldAttrs.value %}x-init="$dispatch('input-{{ props.name }}', '{{ fieldAttrs.value }}')"{% endif %}
-            x-on:input="$dispatch('input-{{ props.name }}', value)"
-            x-model="value"
+            x-model="{{ props.name }}"
             name="{{ props.name }}"
             id="{{ props.name }}"
-            {{ loopAttrs(fieldAttrs) }}
-            class="{{ fieldStyles }} {{ fieldAttrs.class }}">
-        </textarea>
+            {{ loopAttrs(props.fieldAttrs) }}
+            class="{{ fieldStyles }} {{ fieldWrapperStyles }} {{ props.fieldAttrs.class }}"></textarea>
     </span>
 
 </div>
