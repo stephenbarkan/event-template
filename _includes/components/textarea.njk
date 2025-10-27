@@ -39,7 +39,6 @@ description: "
     class="{% if props.direction %}{{ directionClasses[props.direction] }}{% else %}{{ directionClasses['column'] }}{% endif %} {{ attrs.class }}">
 
     {% if props.label %}{{ fieldLabel({tag: "label", fieldProps:props}) }}{% endif %}
-    {% if props.description %}{{ fieldDescription(props) }}{% endif %}
 
     <span class="{{ fieldWrapperStyles }}">
         <textarea
@@ -49,6 +48,8 @@ description: "
             {{ loopAttrs(props.fieldAttrs) }}
             class="{{ fieldStyles }} {{ fieldWrapperStyles }} {{ props.fieldAttrs.class }}"></textarea>
     </span>
+
+    {% if props.description %}{{ fieldDescription(props) }}{% endif %}
 
 </div>
 

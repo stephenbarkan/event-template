@@ -6,12 +6,13 @@
 {% from "components/button.njk" import button %}
 {% from "components/incrementer.njk" import incrementer %}
 {% from "components/marquee.njk" import marquee %}
+{% from "components/checkbox.njk" import checkbox %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 {% set nameLabel = "RSVPing as..." %}
 {% set attendeesLabel = "Number of attendees" %}
-{% set contactMethodLabel = "E-mail address" %}
+{% set contactMethodLabel = "Contact method" %}
 {% set ticketTierLabel = "Choose the ticket tier the best matches your current financial situation" %}
 {% set paymentLabel = "Pay for your tickets now or at the door?" %}
 
@@ -21,10 +22,11 @@
     <div
         x-data="{
                 name: '',
-                email: '',
+                contactMethod: '',
                 attendees: 1,
                 ticketTier: null,
                 payment: '',
+                getInvolved: [],
                 ticketTiers: {
                     1: [10, 15],
                     2: [15, 25],
@@ -78,12 +80,12 @@
 
                 {{ input(
                     props={
-                        name: "contact-method",
-                        label: contactMethodLabel,
-                        description: "",
-                        fieldAttrs: {
-                            type: "email",
-                            required: true
+                        name: "attendees",
+                        label: attendeesLabel,
+                        fieldAttrs:{
+                            type: "number",
+                            required: true,
+                            min: 1
                         }
                     },
                     attrs={class:"w-full"}
@@ -91,12 +93,12 @@
 
                 {{ input(
                     props={
-                        name: "attendees",
-                        label: attendeesLabel,
-                        fieldAttrs:{
-                            type: "number",
-                            required: true,
-                            min: 1
+                        name: "contactMethod",
+                        label: contactMethodLabel,
+                        description: "E-mail address or phone number",
+                        fieldAttrs: {
+                            type: "text",
+                            required: true
                         }
                     },
                     attrs={class:"w-full"}
@@ -129,6 +131,22 @@
                         description: "Venmo @CCHRP now or pay in cash/Venmo at the door."
                     },
                     attrs={class:"w-full"}
+                ) }}
+
+                {{ checkbox(
+                    props={
+                        name: "getInvolved",
+                        label: "Optional: Would you like to get involved?",
+                        description: "",
+                        options: [
+                            {label: "Keep me updated for future events", value: "Future events"},
+                            {label: "Learn more about our work and campaigns", value: "Learn more"},
+                            {label: "Volunteer for Defend Migrants Alliance", value: "Volunteer"},
+                            {label: "Join an organization", value: "Join an org"},
+                            {label: "Learn how your organization can join the Defend Migrants Alliance", value: "Join DMA"}
+                            ]
+                    },
+                    attrs={class: "w-full"}
                 ) }}
             </div>
 
