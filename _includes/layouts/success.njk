@@ -25,9 +25,9 @@ eleventyExcludeFromCollections: true
     {% call container({size:"narrow"},{class:"text-pretty text-center justify-items-center gap-8"}) %}
         <h2 class="text-lg">Please consider sharing the event with your friends!</h2>
         {% call copyToClipboard(props={ input: global.siteDomain, toastMessage: "RSVP link copied to clipboard!"}, attrs={}) %}
-            {{ button({label:"Share RSVP link", type:"button", variant:"ink", size:"base"},{@click:"copy", class:"w-full"}) }}
+            {{ button({label:"Share RSVP link", type:"button", variant: "solid", size:"base"},{@click:"copy", class:"w-full"}) }}
         {% endcall %}
         <div class="border max-w-150 overflow-hidden"><img class="w-full object-cover object-top" src="{{ eventDetails.graphic }}" alt=""></div>
-        {{ button({label:"Return home", type:"link", variant:"hue", size:"inherit"},{href:"/", class:""}) }}
+        {{ button({label:"Return home", type:"link", variant: "outline", size:"inherit"},{href:"/", class:""}) }}
     {% endcall %}
 </main>

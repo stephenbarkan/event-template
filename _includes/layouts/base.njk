@@ -1,7 +1,7 @@
 {# Imports ----------------------------------------------------------------------------------------------------------------------------- #}
 
     {% from "components/toaster.njk" import toaster %}
-    {% from "components/announcementBanner.njk" import announcementBanner with context %}
+    {# {% from "components/announcementBanner.njk" import announcementBanner with context %} #}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -44,9 +44,9 @@
         <link rel="stylesheet" href="/styles.css">
     </head>
     <body class="font-body text-base text-neutral antialiased flex flex-col min-h-dvh items-center bg-surface pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]">
-        {% if global.announcementBannerContent %}
+        {# {% if global.announcementBannerContent %}
             {{ announcementBanner({content: global.announcementBannerContent }) }}
-        {% endif %}
+        {% endif %} #}
 
         {% if environment.env == 'dev' %}
             {% include "components/_developmentWidget.njk" %}

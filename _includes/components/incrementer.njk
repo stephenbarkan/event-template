@@ -1,88 +1,80 @@
-{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
-
-{% set incrementerMeta = {
-    args: '{% call incrementer(
-    props={
-        input: "",
-    },
-    attrs={}
-) %}
-{% endcall %}',
-description: "
--
--
--
-"
-} %}
-
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
+{% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionClasses, fieldStyles, fieldWrapperStyles %}
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
 {% from "components/button.njk" import button %}
-{% from "components/input.njk" import input %}
-{% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionClasses %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% macro incrementer(props={}, attrs={}) %}
 
-{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
-
-{% set value %}
-
-{% endset %}
-
-{% set newProps = {"name": props.name} %}
-
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
-<div x-data="{
-    attendees: 0
-}"
-@input-attendees.window="attendees = $event.detail"
->
 <div
-    x-data="{value:'{% if fieldAttrs.value %}{{fieldAttrs.value}}{% endif %}'}"
+if
+    x-data="{
+        decrement() {
+            {% if props.fieldAttrs.min != null %}
+                if({{ props.name }} > {{ props.fieldAttrs.min }}) {
+                    {{ props.name }} = {{ props.name }} - 1
+                }
+            {% else %}
+                {{ props.name }} = {{ props.name }} - 1
+            {% endif %}
+        },
+        increment() {
+            {% if props.fieldAttrs.max != null %}
+                if({{ props.name }} < {{ props.fieldAttrs.max }}) {
+                    {{ props.name }} = {{ props.name }} + 1
+                }
+            {% else %}
+                {{ props.name }} = {{ props.name }} + 1
+            {% endif %}
+        }
+    }"
+    {% if props.fieldAttrs.value %}x-init="{{ props.name }} = '{{ props.fieldAttrs.value }}'"{% endif %}
     {{ loopAttrs(attrs) }}
     class="{% if props.direction %}{{ directionClasses[props.direction] }}{% else %}{{ directionClasses['column'] }}{% endif %} {{ attrs.class }}">
 
-    {% if props.label %}{{ fieldLabel(props={tag: "label"}, fieldProps=props, fieldAttrs=fieldAttrs) }}{% endif %}
-    <div class="flex gap-2 w-full items-center">
+    {% if props.label %}{{ fieldLabel({tag: "label", fieldProps:props}) }}{% endif %}
+
+    <span class="{{ fieldWrapperStyles }} gap-1">
         {{ button(
             props={
                 type: "button",
-                variant: "hue",
+                variant: "outline",
                 size: "sm",
                 icon: "−"
             },
             attrs={
-                "@click": "attendees = attendees - 1",
+                "@click": "decrement",
                 "class": "h-full",
                 "type": "button"
             }
         ) }}
-        {{ input(
-            props=newProps,
-            attrs=attrs,
-            fieldAttrs=fieldAttrs
-        ) }}
+        <input
+            x-model.number="{{ props.name }}"
+            name="{{ props.name }}"
+            id="{{ props.name }}"
+            {{ loopAttrs(props.fieldAttrs) }}
+            type="number"
+            class="{{ fieldStyles }} {{ props.fieldAttrs.class }} text-center"
+        >
         {{ button(
             props={
                 type: "button",
-                variant: "hue",
+                variant: "outline",
                 size: "sm",
                 icon: "+"
             },
             attrs={
-                "@click": "attendees = attendees + 1",
+                "@click": "increment",
                 "class": "h-full",
                 "type": "button"
             }
         ) }}
-    </div>
+    </span>
 
+    {% if props.description %}{{ fieldDescription(props) }}{% endif %}
 </div>
-</div>
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% endmacro %}

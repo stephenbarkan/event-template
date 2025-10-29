@@ -14,7 +14,7 @@
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 <div x-data="{
-        expanded: $persist(false).as('developmentWidget'),
+        expanded: false,
         windowWidth: window.innerWidth,
         getWidth() {
             window.addEventListener('resize', () => {
@@ -42,10 +42,10 @@
             position:["top", "left"],
             dropdownItems: developmentLinks
         },
-        triggerProps={label: "Dev", type: "button", size:"sm", variant:"hue"}
+        triggerProps={label: "Dev", type: "button", size:"sm", variant: "outline"}
     )}}
     {% endif %}
-    {% call button({type:"button", size:"sm", variant:"hue"}, {@click:"expanded = !expanded", ":title":"expanded ? 'Minimize widget' : 'Expand widget'"}) %}
+    {% call button({type:"button", size:"sm", variant: "outline"}, {@click:"expanded = !expanded", ":title":"expanded ? 'Minimize widget' : 'Expand widget'"}) %}
         <span x-show="!expanded" class="text-icon">›</span>
         <span x-show="expanded" class="text-icon">‹</span>
     {% endcall%}

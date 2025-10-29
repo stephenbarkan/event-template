@@ -2,7 +2,6 @@
 
 {% from "components/input.njk" import input %}
 {% from "components/radio.njk" import radio %}
-{% from "components/fieldset.njk" import fieldset %}
 {% from "components/button.njk" import button %}
 {% from "components/incrementer.njk" import incrementer %}
 {% from "components/marquee.njk" import marquee %}
@@ -12,7 +11,7 @@
 
 {% set nameLabel = "RSVPing as..." %}
 {% set attendeesLabel = "Number of attendees" %}
-{% set contactMethodLabel = "Contact method" %}
+{% set contactMethodLabel = "Optional: Phone number" %}
 {% set ticketTierLabel = "Choose the ticket tier the best matches your current financial situation" %}
 {% set paymentLabel = "Pay for your tickets now or at the door?" %}
 
@@ -22,6 +21,7 @@
     <div
         x-data="{
                 name: '',
+                email: '',
                 contactMethod: '',
                 attendees: 1,
                 ticketTier: null,
@@ -64,6 +64,7 @@
                 </h2>
             {% endcall %}
             <div class="flex flex-col items-center gap-half-section text-hue px-fluid-inline">
+
                 {{ input(
                     props={
                         name: "name",
@@ -78,14 +79,25 @@
                     attrs={class:"w-full"}
                 ) }}
 
+                {{ incrementer(props={
+                    name: "attendees",
+                    label: attendeesLabel,
+                    fieldAttrs:{
+                        required: true,
+                        min: 1
+                    }
+                },
+                attrs={
+                    class:"w-full"
+                }) }}
+
                 {{ input(
                     props={
-                        name: "attendees",
-                        label: attendeesLabel,
-                        fieldAttrs:{
-                            type: "number",
-                            required: true,
-                            min: 1
+                        name: "email",
+                        label: "Email address",
+                        fieldAttrs: {
+                            type: "email",
+                            required: true
                         }
                     },
                     attrs={class:"w-full"}
@@ -94,11 +106,10 @@
                 {{ input(
                     props={
                         name: "contactMethod",
-                        label: contactMethodLabel,
-                        description: "E-mail address or phone number",
+                        label: "Optional: Phone number",
                         fieldAttrs: {
-                            type: "text",
-                            required: true
+                            type: "tel",
+                            required: false
                         }
                     },
                     attrs={class:"w-full"}
@@ -124,8 +135,8 @@
                         name: "payment",
                         label: paymentLabel,
                         options: [
-                            {label: "I’ll pay now (Thank you!)", value: "Pay in advance"},
-                            {label: "I’ll pay at the door", value: "Pay at door"}
+                            {label: "Pay now (Thank youu!)", value: "Pay in advance"},
+                            {label: "Pay at the door", value: "Pay at door"}
                         ],
                         fieldAttrs:{required: true},
                         description: "Venmo @CCHRP now or pay in cash/Venmo at the door."
@@ -142,8 +153,8 @@
                             {label: "Get updates on future events", value: "Future events"},
                             {label: "Learn more about DMA's work and campaigns", value: "Learn more"},
                             {label: "Volunteer (flyer, plan events, share skills & resources)", value: "Volunteer"},
-                            {label: "Join an organization", value: "Join an org"},
-                            {label: "Add your organization to the Defend Migrants Alliance", value: "Join DMA"}
+                            {label: "Join one of the organizations", value: "Join an org"},
+                            {label: "Learn how your organization can join the Defend Migrants Alliance", value: "Join DMA"}
                         ]
                     },
                     attrs={class: "w-full"}
@@ -156,7 +167,7 @@
                     <span class="text-lg text-neutral flex items-center" x-text="updateTotal()"></span>
                     <small x-show="payment" class="text-sm text-neutral/70 text-pretty" x-text="paymentMessages[payment]"></small>
                 </div>
-                <div class="py-8 px-fluid-inline md:px-6 flex items-center">{{ button({label: "Submit RSVP", type:"button", size:"base", variant: "ink"}, {type:"submit", class:"w-full"}) }}</div>
+                <div class="py-8 px-fluid-inline md:px-6 flex items-center">{{ button({label: "Submit RSVP", type:"button", size:"base", variant: "solid"}, {type:"submit", class:"w-full"}) }}</div>
             </div>
 
         </form>

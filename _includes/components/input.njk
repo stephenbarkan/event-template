@@ -44,7 +44,7 @@ description: "
 
     <span class="{{ fieldWrapperStyles }}">
         <input
-            x-model="{{ props.name }}"
+            x-model{% if props.fieldAttrs.type === 'number'%}.number{% endif %}="{{ props.name }}"
             name="{{ props.name }}"
             id="{{ props.name }}"
             {{ loopAttrs(props.fieldAttrs) }}

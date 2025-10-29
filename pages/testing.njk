@@ -7,7 +7,6 @@ layout: base
 {% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionClasses, fieldStyles, fieldsetOptionStyles, fieldWrapperStyles %}
 {% from "components/markdown.njk" import markdown %}
 {% from "components/input.njk" import input %}
-{% from "components/textarea.njk" import textarea %}
 {% from "components/radio.njk" import radio %}
 {% from "components/checkbox.njk" import checkbox %}
 {% from "components/button.njk" import button %}
@@ -108,20 +107,7 @@ layout: base
             checkboxes: []
         }"
         class="flex flex-col gap-half-section">
-        {{ textarea(
-            props={
-                name: "textarea",
-                label: "Textarea",
-                description: "This is a textarea",
-                direction: "column",
-                fieldAttrs:{
-                    placeholder: "Placeholder",
-                    required: true,
-                    rows: "10"
-                }
-            },
-            attrs={}
-        ) }}
+
         {{ input(
             {
                 name: 'email',
@@ -171,6 +157,6 @@ Checkboxes: <span x-text="checkboxes"></span>
         </pre>
     {% endcall %}
 
-    {{ button({label: "Submit RSVP", type:"button", size:"base", variant: "ink"}, {type:"submit", class:"w-full"}) }}
+    {{ button({label: "Submit RSVP", type:"button", size:"base", variant: "solid"}, {type:"submit", class:"w-full"}) }}
     </form>
 {% endcall %}
