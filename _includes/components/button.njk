@@ -37,7 +37,7 @@
 
 
 <{% if attrs.href %}a{% else %}button{% endif %}
-    class="relative shrink-0 disabled:opacity-60 active:scale-[.98] inline-grid cursor-pointer {{ attrs.class }} {% if attrs.disabled %}pointer-events-none{% endif %}
+    class="relative shrink-0 disabled:opacity-60 active:scale-[.98] items-center inline-grid cursor-pointer {{ attrs.class }} {% if attrs.disabled %}pointer-events-none{% endif %}
     {{ types[props.type].styles }} {{ types[props.type].sizes[props.size] }} {{ types[props.type].variants[props.variant] }}"
     {# {{ typeClasses[props.type] }} {{ sizeClasses[props.size] }}" #}
     {{ loopAttrs(attrs) }}
