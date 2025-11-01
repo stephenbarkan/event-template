@@ -130,7 +130,7 @@
                     attrs={class:"w-full"}
                 ) }}
 
-                {{ radio(
+                {# {{ radio(
                     props={
                         name: "payment",
                         label: paymentLabel,
@@ -142,7 +142,7 @@
                         description: "Venmo @CCHRP now or pay in cash/Venmo at the door."
                     },
                     attrs={class:"w-full"}
-                ) }}
+                ) }} #}
 
                 {{ checkbox(
                     props={
@@ -165,7 +165,7 @@
                 <div class="md:col-span-2 text-lg max-md:border-b md:border-r px-fluid-inline md:justify-center md:px-6 border-hue/75 py-8 grid grid-cols-[1fr_max-content] gap-3">
                     <span class="text-lg flex gap-4 items-center">Please pay:</span>
                     <span class="text-lg text-neutral flex items-center" x-text="updateTotal()"></span>
-                    <small x-show="payment" class="text-sm text-neutral/70 text-pretty" x-text="paymentMessages[payment]"></small>
+                    {# <small x-show="payment" class="text-sm text-neutral/70 text-pretty" x-text="paymentMessages[payment]"></small> #}
                 </div>
                 <div class="py-8 px-fluid-inline md:px-6 flex items-center">{{ button({label: "Submit RSVP", type:"button", size:"base", variant: "solid"}, {type:"submit", class:"w-full"}) }}</div>
             </div>

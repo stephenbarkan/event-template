@@ -25,7 +25,7 @@ args: '{{ accordion(
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set accordionStyles = "py-7 md:py-8" %}
+{% set accordionStyles = "py-7 md:py-8 border-b-2 border-dark-grey" %}
 {% set summaryStyles = "text-lg text-balance underline-offset-3 decoration-2" %}
 {% set contentStyles = "text-base max-w-narrow pt-6 md:pt-7" %}
 
@@ -43,7 +43,7 @@ args: '{{ accordion(
         <details
             {% if item.isOpen %}open{% endif %}
             {{ loopAttrs(item.attrs) }}
-            class="w-full flex flex-col group border-b-2 border-dark-grey {{ accordionStyles }} {{ item.attrs.class }}">
+            class="w-full flex flex-col group {{ accordionStyles }} {{ item.attrs.class }}">
             <summary class="flex items-center justify-between appearance-none cursor-pointer">
                     <h2 class="{{ summaryStyles }}">{{ item.title }}</h2>
                     <span class="block text-icon group-open:hidden">+</span>
